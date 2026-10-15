@@ -1,0 +1,4 @@
+/* TT 嵌入样式源码：交由 scripts/build-tt-css.mjs 编译并作用域化到 .tt-shell */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

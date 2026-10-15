@@ -1,0 +1,47 @@
+{
+  "name": "demand-distiller",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "需求分析蒸馏器 — 从碎片化素材中识别意图、蒸馏产品机会、产出可执行 PM 资产",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"node server/index.js\" \"vite\"",
+    "dev:api": "node server/index.js",
+    "dev:web": "vite",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@base-ui/react": "1.7.0",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/modifiers": "^7.0.0",
+    "@dnd-kit/sortable": "^8.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@fontsource/geist-mono": "^5.3.0",
+    "@insforge/sdk": "^1.4.5",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.4.0",
+    "html-to-image": "^1.11.13",
+    "lucide-react": "^0.544.0",
+    "motion": "^12.43.0",
+    "pdfkit": "^0.19.1",
+    "react": "^19.1.0",
+    "react-day-picker": "^9.14.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.18.2",
+    "tailwind-merge": "^3.6.0",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.5.0",
+    "autoprefixer": "^10.5.4",
+    "concurrently": "^9.1.2",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.0.0"
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+data/
+# 第三方依赖与外部仓库（depend/node_modules、repos、archives 均不纳入版本库）
+depend/
+*.log
+.env
+.env.local
+.DS_Store
+# 运行日志（scripts/dev.mjs 输出，保留最近 30 次运行）
+log/

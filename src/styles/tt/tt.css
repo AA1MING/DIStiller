@@ -1,0 +1,5314 @@
+/* 自动生成：node scripts/build-tt-css.mjs —— 请勿手改。
+   来源：src/styles/tt/_tt-styles-src.css（原版抄录，作用域化到 .tt-shell）
+        + src/styles/tt/_tt-src.css（Tailwind preflight + utilities，作用域化） */
+
+/* ----------------------------------------------------------------
+   主应用全局元素样式中和：作用域内还原原版 preflight/reset 语义，
+   防止 demand-distiller 的全局元素规则渗入 TT 页面。
+   （原版 preflight 不设置这些属性；这里显式还原默认值，效用同上。）
+---------------------------------------------------------------- */
+.tt-shell h1, .tt-shell h2, .tt-shell h3, .tt-shell h4, .tt-shell h5, .tt-shell h6 {
+  font-family: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  line-height: inherit;
+}
+.tt-shell input, .tt-shell select, .tt-shell textarea {
+  width: auto;
+  color: inherit;
+  background: transparent;
+  border: 0 solid;
+  border-radius: 0;
+  padding: 0;
+  caret-color: auto;
+}
+.tt-shell table { color: inherit; }
+.tt-shell th { color: inherit; }
+.tt-shell a { color: inherit; }
+
+
+.tt-shell {
+  color-scheme: light;
+
+  /* ========================================
+     TokenTracker Design System - Brand Colors
+     ======================================== */
+
+  /* Colors - Primary (using OKLCH for perceptual uniformity) */
+  --oai-black: #141413;
+  --oai-white: #faf9f5;
+
+  /* Colors - Warm-tinted Neutrals (subtle green tint for cohesion)
+     sRGB hex fallbacks for browsers without oklch() support (Chromium <111,
+     e.g. older WebView2). The @supports block at the end of this file restores
+     the original oklch() values on modern engines, so nothing changes there. */
+  --oai-gray-50: #f7f5ee;
+  --oai-gray-100: #f0eee6;
+  --oai-gray-200: #e8e6dc;
+  --oai-gray-300: #d1cfc5;
+  --oai-gray-400: #b0aea5;
+  --oai-gray-500: #87867f;
+  --oai-gray-600: #5e5d59;
+  --oai-gray-700: #4d4c48;
+  --oai-gray-800: #30302e;
+  --oai-gray-900: #1f1f1d;
+  --oai-gray-950: #141413;
+
+  /* Brand Color - Muted Forest Green (适合白色背景)
+     使用更柔和的深绿色，而非刺眼的荧光绿
+  */
+  --brand-primary: #d97757;
+  --brand-primary-dark: #c96442;
+  --brand-primary-light: #e89270;
+  --brand-50: #fdf3ef;
+  --brand-100: #fae5dc;
+  --brand-200: #f5cab9;
+  --brand-300: #efa88d;
+  --brand-400: #e6875f;
+  --brand-500: #e89270;
+  --brand-600: #d97757;
+  --brand-700: #c96442;
+  --brand-800: #8a4028;
+  --brand-900: #6e3220;
+  --brand-950: #3e1a10;
+
+  /* Supporting accent - Emerald (30%) */
+  --forest: #e89270;
+  --forest-dark: #d97757;
+  --forest-light: #e6875f;
+
+  /* Secondary accents - Amber for contrast (10%) */
+  --amber: #e6875f;
+  --amber-dark: #c96442;
+  --amber-light: #f0a488;
+
+  /* Legacy blue mapping - now uses brand green */
+  --oai-blue: #d97757;
+  --oai-blue-dark: #c96442;
+  --oai-blue-light: #e89270;
+
+  /* Colors - Semantic */
+  --oai-success: #e89270;
+  --oai-warning: #e6875f;
+  --oai-error: #b53333;
+  --oai-info: #d97757;
+
+  /* Provider accents */
+  --provider-anythingllm: #d9a05b;
+
+  /* Global metrics data visualization */
+  --community-codex: #d97757;
+  --community-claude: #c96442;
+  --community-cursor: #e89270;
+  --community-opencode: #e6875f;
+  --community-hermes: #c9604f;
+  --community-gemini: #e6875f;
+  --community-kimi: #efa88d;
+  --community-zcode: #8a4028;
+  --community-mimo: #ff6900;
+  --community-droid: #c9604f;
+  --community-workbuddy: #e6875f;
+  --community-copilot: #b04e2e;
+  --community-kiro: #8a4028;
+  --community-grok: #d9827a;
+  --community-deepseek: #d9a05b;
+  --community-minimax: #e6875f;
+  --community-token-input: #d97757;
+  --community-token-cache-read: #d9a05b;
+  --community-token-cache-write: #8a4028;
+  --community-token-output: #e6875f;
+  --community-token-reasoning: #c9604f;
+  --community-trend: #d97757;
+  --community-muted: #b0aea5;
+
+  /* Typography - Font Families */
+  --oai-font-sans: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, sans-serif;
+  --oai-font-mono: "SF Mono", sfmono-regular, ui-monospace, menlo, monaco, consolas, monospace;
+
+  /* Typography - Font Sizes */
+  --text-hero: 48px;
+  --text-h1: 36px;
+  --text-h2: 28px;
+  --text-h3: 22px;
+  --text-h4: 18px;
+  --text-body: 16px;
+  --text-body-sm: 14px;
+  --text-caption: 12px;
+  --text-label: 11px;
+
+  /* Spacing */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+}
+
+/* ========================================
+   Dark Mode Variables
+   ======================================== */
+
+.tt-shell.dark {
+  color-scheme: dark;
+
+  /* Colors - Primary (swapped for dark mode) */
+  --oai-black: #faf9f5;
+  --oai-white: #141413;
+
+  /* Colors - Warm-tinted Neutrals (hue 145 matches brand green for cohesion)
+     sRGB hex fallbacks; oklch() restored via the @supports block at EOF. */
+  --oai-gray-50: #161615;
+  --oai-gray-100: #1e1e1c;
+  --oai-gray-200: #2a2a27;
+  --oai-gray-300: #3d3d3a;
+  --oai-gray-400: #5e5d59;
+  --oai-gray-500: #87867f;
+  --oai-gray-600: #b0aea5;
+  --oai-gray-700: #c9c5b8;
+  --oai-gray-800: #e0ddd1;
+  --oai-gray-900: #f0eee6;
+  --oai-gray-950: #f7f5ee;
+
+  /* Brand colors remain the same but may need adjustment for dark bg */
+  --brand-primary: #e89270;
+  --brand-primary-dark: #d97757;
+  --brand-primary-light: #e6875f;
+
+  /* Supporting accents remain the same */
+  --forest: #e6875f;
+  --forest-dark: #e89270;
+  --forest-light: #efa88d;
+
+  /* Legacy blue mapping */
+  --oai-blue: #e89270;
+  --oai-blue-dark: #d97757;
+  --oai-blue-light: #e6875f;
+
+  /* Semantic colors */
+  --oai-success: #e6875f;
+  --oai-warning: #f0a488;
+  --oai-error: #e07a70;
+  --oai-info: #e89270;
+}
+
+.tt-shell, .tt-shell {
+  height: 100%;
+}
+
+.tt-shell {
+  margin: 0;
+  background: var(--oai-white);
+  color: var(--oai-black);
+  font-family: var(--oai-font-sans);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global: suppress focus outlines and Tailwind ring on Tab/click focus.
+   Inputs/textareas keep their own border-color :focus styling defined per-component. */
+.tt-shell *:focus, .tt-shell *:focus-visible {
+  outline: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
+/* TokenTrackerBar WKWebView: `native-app` on <html> (inline head script + Swift); NSVisualEffectView under transparent WKWebView. */
+.tt-shell.native-app, .tt-shell.native-app.dark {
+  background: transparent !important;
+}
+
+.tt-shell.native-app body, .tt-shell.native-app #root {
+  background: transparent !important;
+}
+
+.tt-shell.native-app #root {
+  min-height: 100%;
+}
+
+/* Mac App：主内容卡圆角由 Swift 注入 --tt-main-card-radius（与窗口留白同心近似），见 DashboardChromeMetrics */
+.tt-shell.native-app {
+  --tt-main-card-radius: 1rem;
+}
+
+.tt-shell.native-app .tt-native-main-card {
+  border-radius: var(--tt-main-card-radius, 1rem);
+}
+
+/* Windows WebView2 native shell: DWM acrylic sits underneath the transparent page.
+   Add a subtle tint so the sidebar/title strip reads like glass even when the
+   OS backdrop has little content behind it to blur. */
+.tt-shell.native-windows-app .tt-native-glass-shell {
+  isolation: isolate;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018) 36%, rgba(0, 0, 0, 0.14)),
+    rgba(32, 32, 32, 0.72) !important;
+}
+
+.tt-shell.native-windows-app .tt-native-glass-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.018) 28%, transparent 58%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 5px);
+  backdrop-filter: blur(28px) saturate(150%);
+  -webkit-backdrop-filter: blur(28px) saturate(150%);
+}
+
+.tt-shell.native-windows-app .tt-native-glass-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+.tt-shell.native-windows-app.dark .tt-native-glass-shell::before {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02) 28%, transparent 58%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 5px);
+}
+
+.tt-shell.native-windows-app .tt-native-glass-shell aside[data-native-sidebar] {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.018) 42%, rgba(0, 0, 0, 0.1)),
+    rgba(28, 28, 28, 0.58);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    inset -1px 0 0 rgba(0, 0, 0, 0.22),
+    inset 1px 0 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(30px) saturate(155%);
+  -webkit-backdrop-filter: blur(30px) saturate(155%);
+}
+
+/* ========================================
+     OpenAI Design System Components - Light Mode
+     ======================================== */
+
+/* Panel - Main container style */
+
+.tt-shell .oai-panel {
+    background: var(--oai-white);
+    border: 1px solid var(--oai-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+  }
+
+.tt-shell .oai-panel--strong {
+    background: var(--oai-gray-50);
+    border-color: var(--oai-gray-300);
+  }
+
+/* Card - Standard card style */
+
+.tt-shell .oai-card {
+    background: var(--oai-white);
+    border: 1px solid var(--oai-gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    transition: border-color 150ms ease;
+  }
+
+.tt-shell .oai-card:hover {
+    border-color: var(--oai-gray-300);
+  }
+
+.tt-shell .oai-card--accent {
+    background: var(--oai-gray-50);
+    border-color: var(--oai-gray-300);
+  }
+
+/* Button - Primary */
+
+.tt-shell .oai-button-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 var(--space-4);
+    background: var(--oai-black);
+    color: var(--oai-white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--oai-font-sans);
+    font-size: var(--text-body-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 150ms ease;
+  }
+
+.tt-shell .oai-button-primary:hover {
+    background: var(--oai-gray-800);
+  }
+
+.tt-shell .oai-button-primary:active {
+    background: var(--oai-black);
+  }
+
+/* Button - Secondary */
+
+.tt-shell .oai-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 var(--space-4);
+    background: transparent;
+    color: var(--oai-black);
+    border: 1px solid var(--oai-gray-300);
+    border-radius: var(--radius-md);
+    font-family: var(--oai-font-sans);
+    font-size: var(--text-body-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 150ms ease;
+  }
+
+.tt-shell .oai-button-secondary:hover {
+    background: var(--oai-gray-100);
+  }
+
+/* Button - Ghost */
+
+.tt-shell .oai-button-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 var(--space-4);
+    background: transparent;
+    color: var(--oai-gray-600);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--oai-font-sans);
+    font-size: var(--text-body-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 150ms ease;
+  }
+
+.tt-shell .oai-button-ghost:hover {
+    color: var(--oai-black);
+  }
+
+/* Button - Small variant */
+
+.tt-shell .oai-button-sm {
+    height: 36px;
+    padding: 0 var(--space-3);
+  }
+
+/* Input - Standard input style */
+
+.tt-shell .oai-input {
+    height: 40px;
+    padding: 0 var(--space-3);
+    background: var(--oai-white);
+    color: var(--oai-black);
+    border: 1px solid var(--oai-gray-300);
+    border-radius: var(--radius-md);
+    font-family: var(--oai-font-sans);
+    font-size: var(--text-body-sm);
+    outline: none;
+    transition: border-color 150ms ease;
+  }
+
+.tt-shell .oai-input::placeholder {
+    color: var(--oai-gray-400);
+  }
+
+.tt-shell .oai-input:focus {
+    border-color: var(--oai-blue);
+  }
+
+/* ========================================
+     Dark Mode Component Overrides
+     ======================================== */
+
+.tt-shell.dark .oai-panel {
+    background: linear-gradient(180deg, #1c1b18 0%, #171613 100%);
+    border-color: var(--oai-gray-800);
+  }
+
+.tt-shell.dark .oai-panel--strong {
+    background: linear-gradient(180deg, #282521 0%, #1d1b17 100%);
+    border-color: var(--oai-gray-700);
+  }
+
+.tt-shell.dark .oai-card {
+    background: linear-gradient(180deg, #1c1b18 0%, #171613 100%);
+    border-color: var(--oai-gray-800);
+  }
+
+.tt-shell.dark .oai-card:hover {
+    border-color: var(--oai-gray-700);
+  }
+
+.tt-shell.dark .oai-card--accent {
+    background: linear-gradient(180deg, #282521 0%, #1d1b17 100%);
+    border-color: var(--oai-gray-700);
+  }
+
+.tt-shell.dark .oai-button-primary {
+    background: var(--oai-gray-100);
+    color: var(--oai-gray-950);
+  }
+
+.tt-shell.dark .oai-button-primary:hover {
+    background: var(--oai-gray-200);
+  }
+
+.tt-shell.dark .oai-button-primary:active {
+    background: var(--oai-gray-100);
+  }
+
+.tt-shell.dark .oai-button-secondary {
+    color: var(--oai-gray-100);
+    border-color: var(--oai-gray-700);
+  }
+
+.tt-shell.dark .oai-button-secondary:hover {
+    background: var(--oai-gray-800);
+  }
+
+.tt-shell.dark .oai-button-ghost {
+    color: var(--oai-gray-500);
+  }
+
+.tt-shell.dark .oai-button-ghost:hover {
+    color: var(--oai-gray-100);
+  }
+
+.tt-shell.dark .oai-input {
+    background: var(--oai-gray-900);
+    color: var(--oai-gray-100);
+    border-color: var(--oai-gray-700);
+  }
+
+.tt-shell.dark .oai-input::placeholder {
+    color: var(--oai-gray-600);
+  }
+
+.tt-shell.dark .oai-input:focus {
+    border-color: var(--oai-blue);
+  }
+
+/* ========================================
+     OpenAI Design System Utilities - Light Mode
+     ======================================== */
+
+/* Typography utilities */
+
+.tt-shell .oai-text-hero {
+    font-size: var(--text-hero);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+.tt-shell .oai-text-h1 {
+    font-size: var(--text-h1);
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+.tt-shell .oai-text-h2 {
+    font-size: var(--text-h2);
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+.tt-shell .oai-text-h3 {
+    font-size: var(--text-h3);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+.tt-shell .oai-text-h4 {
+    font-size: var(--text-h4);
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+.tt-shell .oai-text-body {
+    font-size: var(--text-body);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+.tt-shell .oai-text-body-sm {
+    font-size: var(--text-body-sm);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+.tt-shell .oai-text-caption {
+    font-size: var(--text-caption);
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+.tt-shell .oai-text-label {
+    font-size: var(--text-label);
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+/* Color utilities */
+
+.tt-shell .oai-text-muted {
+    color: var(--oai-gray-500);
+  }
+
+.tt-shell .oai-text-secondary {
+    color: var(--oai-gray-600);
+  }
+
+.tt-shell .oai-bg-surface {
+    background: var(--oai-white);
+  }
+
+.tt-shell .oai-bg-elevated {
+    background: var(--oai-gray-50);
+  }
+
+/* Scrollbar utilities - OpenAI style */
+
+.tt-shell .oai-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--oai-gray-300) transparent;
+    scrollbar-gutter: stable both-edges;
+  }
+
+.tt-shell .oai-scrollbar::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+.tt-shell .oai-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+.tt-shell .oai-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--oai-gray-300);
+    border-radius: var(--radius-full);
+  }
+
+.tt-shell .oai-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--oai-gray-400);
+  }
+
+/* ========================================
+     Dark Mode Utility Overrides
+     ======================================== */
+
+.tt-shell.dark .oai-text-muted {
+    color: var(--oai-gray-500);
+  }
+
+.tt-shell.dark .oai-text-secondary {
+    color: var(--oai-gray-400);
+  }
+
+.tt-shell.dark .oai-bg-surface {
+    background: var(--oai-gray-900);
+  }
+
+.tt-shell.dark .oai-bg-elevated {
+    background: var(--oai-gray-100);
+  }
+
+.tt-shell.dark .oai-scrollbar {
+    scrollbar-color: var(--oai-gray-400) transparent;
+  }
+
+.tt-shell.dark .oai-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--oai-gray-400);
+  }
+
+.tt-shell.dark .oai-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--oai-gray-500);
+  }
+
+/* Heatmap: thin scrollbar that doesn't push content */
+.tt-shell .heatmap-scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.tt-shell .heatmap-scroll-thin::-webkit-scrollbar {
+  height: 4px;
+}
+.tt-shell .heatmap-scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.tt-shell .heatmap-scroll-thin::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 2px;
+}
+.tt-shell .heatmap-scroll-thin:hover, .tt-shell .heatmap-scroll-thin:focus-within {
+  scrollbar-color: var(--oai-gray-200) transparent;
+}
+.tt-shell .heatmap-scroll-thin:hover::-webkit-scrollbar-thumb, .tt-shell .heatmap-scroll-thin:focus-within::-webkit-scrollbar-thumb {
+  background: var(--oai-gray-200);
+}
+.tt-shell .heatmap-scroll-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--oai-gray-400);
+}
+.tt-shell.dark .heatmap-scroll-thin {
+  scrollbar-color: transparent transparent;
+}
+.tt-shell.dark .heatmap-scroll-thin::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* Leaderboard: GitHub avatar frame. Machined-graphite conic ring (GitHub
+   Primer grays) echoing the achievement coins' metal finish; the element's
+   own padding is the visible ring, the inner gap layer knocks out a 1px
+   page-background seam so the ring reads as a set bezel. */
+.tt-shell .gh-avatar-frame {
+  background: conic-gradient(
+    from 210deg,
+    #24292e,
+    #4d565f 18%,
+    #24292e 38%,
+    #767f88 55%,
+    #24292e 72%,
+    #57606a 88%,
+    #24292e
+  );
+}
+.tt-shell.dark .gh-avatar-frame {
+  background: conic-gradient(
+    from 210deg,
+    #c6cdd5,
+    #79828b 20%,
+    #aeb7bf 42%,
+    #67707a 60%,
+    #c6cdd5 80%,
+    #8b949e 92%,
+    #c6cdd5
+  );
+}
+.tt-shell.dark .heatmap-scroll-thin:hover, .tt-shell.dark .heatmap-scroll-thin:focus-within {
+  scrollbar-color: var(--oai-gray-600) transparent;
+}
+.tt-shell.dark .heatmap-scroll-thin:hover::-webkit-scrollbar-thumb, .tt-shell.dark .heatmap-scroll-thin:focus-within::-webkit-scrollbar-thumb {
+  background: var(--oai-gray-600);
+}
+.tt-shell.dark .heatmap-scroll-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--oai-gray-500);
+}
+
+/* ========================================
+     Animation Utilities - Bolder Dashboard
+     ======================================== */
+
+/* Staggered fade-in animation for cards */
+
+.tt-shell .animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+@keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+/* Stagger delays for card grids */
+
+.tt-shell .stagger-1 { animation-delay: 50ms; }
+
+.tt-shell .stagger-2 { animation-delay: 100ms; }
+
+.tt-shell .stagger-3 { animation-delay: 150ms; }
+
+.tt-shell .stagger-4 { animation-delay: 200ms; }
+
+.tt-shell .stagger-5 { animation-delay: 250ms; }
+
+.tt-shell .stagger-6 { animation-delay: 300ms; }
+
+/* Number count animation */
+
+.tt-shell .animate-count {
+    animation: countPulse 0.3s ease-out;
+  }
+
+@keyframes countPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+  }
+
+/* Hover lift effect */
+
+.tt-shell .hover-lift {
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  }
+
+.tt-shell .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+/* Spinner and entry animation utilities */
+
+.tt-shell .animate-spin-subtle {
+    animation: spinSubtle 1s linear infinite;
+  }
+
+@keyframes spinSubtle {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+.tt-shell .animate-scale-up-fade {
+    animation: scaleUpFade 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+@keyframes scaleUpFade {
+    from {
+      opacity: 0;
+      transform: scale(0.96) translateY(2px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+/* Shimmer effect for loading states */
+
+.tt-shell .shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--oai-gray-100) 25%,
+      var(--oai-gray-50) 50%,
+      var(--oai-gray-100) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+/* Clawd animated SVG: scale inner SVG to fill container */
+
+.tt-shell .clawd-animated > svg {
+    width: 100%;
+    height: 100%;
+  }
+
+/* Marquee — used by SkillsPage empty state provider rail */
+
+@keyframes marquee-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+.tt-shell .animate-marquee-x {
+    animation: marquee-x 14s linear infinite;
+  }
+
+/* Shared "zoom to inspect" modal motion (ProjectDetailModal; also inlined
+     by TrendMonitorZoomModal / ActivityHeatmap's 3D insight modal — keep in
+     sync until those inline copies are removed). */
+
+@keyframes tt-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes tt-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+@keyframes tt-modal-entrance {
+    from { opacity: 0; transform: scale(0.96) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+@keyframes tt-modal-exit {
+    from { opacity: 1; transform: scale(1) translateY(0); }
+    to { opacity: 0; transform: scale(0.96) translateY(10px); }
+  }
+
+.tt-shell .animate-tt-fade-in { animation: tt-fade-in 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+.tt-shell .animate-tt-fade-out { animation: tt-fade-out 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+.tt-shell .animate-tt-modal { animation: tt-modal-entrance 0.3s cubic-bezier(0.34, 1.3, 0.64, 1) forwards; }
+
+.tt-shell .animate-tt-modal-exit { animation: tt-modal-exit 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+    .tt-shell .animate-tt-fade-in, .tt-shell .animate-tt-fade-out, .tt-shell .animate-tt-modal, .tt-shell .animate-tt-modal-exit { animation: none; }
+  }
+
+/* ========================================
+     Dark Mode Animation Overrides
+     ======================================== */
+
+.tt-shell.dark .shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--oai-gray-100) 25%,
+      var(--oai-gray-200) 50%,
+      var(--oai-gray-100) 75%
+    );
+    background-size: 200% 100%;
+  }
+
+.tt-shell.dark .hover-lift:hover {
+    box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
+  }
+
+/* ========================================
+     Cost Modal Transitions
+     ======================================== */
+
+.tt-shell .cost-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    opacity: 1;
+    transition: opacity 200ms ease-out;
+  }
+
+.tt-shell .cost-modal-backdrop[data-starting-style], .tt-shell .cost-modal-backdrop[data-ending-style] {
+    opacity: 0;
+  }
+
+.tt-shell .cost-modal-popup {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition:
+      opacity 220ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+.tt-shell .cost-modal-popup[data-starting-style], .tt-shell .cost-modal-popup[data-ending-style] {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+
+.tt-shell.dark .cost-modal-backdrop {
+    background: rgba(0, 0, 0, 0.6);
+  }
+
+/* ========================================
+   DateRangePicker — black/white selection
+   ======================================== */
+/* Range start/end/middle share black fill */
+.tt-shell .rdp-selected {
+  background: var(--oai-black) !important;
+  border-radius: 0 !important;
+}
+.tt-shell .rdp-selected .rdp-day-btn {
+  background: transparent !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+}
+/* Only round the outer edge of start/end */
+.tt-shell .rdp-range-start {
+  border-radius: 8px 0 0 8px !important;
+}
+.tt-shell .rdp-range-end {
+  border-radius: 0 8px 8px 0 !important;
+}
+/* Single day selected (start == end) */
+.tt-shell .rdp-range-start.rdp-range-end {
+  border-radius: 8px !important;
+}
+.tt-shell.dark .rdp-selected {
+  background: var(--oai-white) !important;
+}
+.tt-shell.dark .rdp-selected .rdp-day-btn {
+  background: transparent !important;
+  color: var(--oai-black) !important;
+}
+/* Range middle inherits from .rdp-selected above */
+/* Navigation chevron arrows — dark mode */
+.tt-shell.dark .rdp-oai svg.rdp-chevron {
+  fill: var(--oai-gray-400);
+}
+
+/* ========================================
+   Progressive enhancement: restore OKLCH on engines that support it.
+   The base declarations above use sRGB hex so older Chromium/WebView2
+   (<111, no oklch() parsing → transparent custom properties, issue #252)
+   render correctly. Modern engines fall into this block and get the
+   original perceptually-uniform OKLCH values back — visuals unchanged.
+   Custom properties are not parse-time validated, so a same-block hex→oklch
+   fallback would NOT work; the @supports gate is required.
+   ======================================== */
+@supports (color: oklch(0% 0 0)) {
+  .tt-shell {
+    --oai-gray-50: oklch(98% 0.006 80);
+    --oai-gray-100: oklch(95.5% 0.01 80);
+    --oai-gray-200: oklch(90% 0.014 80);
+    --oai-gray-300: oklch(84% 0.018 80);
+    --oai-gray-400: oklch(74% 0.022 80);
+    --oai-gray-500: oklch(62% 0.02 80);
+    --oai-gray-600: oklch(50% 0.018 80);
+    --oai-gray-700: oklch(40% 0.016 80);
+    --oai-gray-800: oklch(30% 0.014 80);
+    --oai-gray-900: oklch(22% 0.012 80);
+    --oai-gray-950: oklch(16% 0.01 80);
+  }
+
+  .tt-shell.dark {
+    --oai-gray-50: oklch(20% 0.01 80);
+    --oai-gray-100: oklch(24% 0.012 80);
+    --oai-gray-200: oklch(30% 0.014 80);
+    --oai-gray-300: oklch(40% 0.016 80);
+    --oai-gray-400: oklch(55% 0.018 80);
+    --oai-gray-500: oklch(65% 0.018 80);
+    --oai-gray-600: oklch(75% 0.016 80);
+    --oai-gray-700: oklch(85% 0.012 80);
+    --oai-gray-800: oklch(92% 0.008 80);
+    --oai-gray-900: oklch(96% 0.006 80);
+    --oai-gray-950: oklch(98% 0.004 80);
+  }
+
+  .tt-shell.dark .oai-panel, .tt-shell.dark .oai-card {
+    background: linear-gradient(180deg, oklch(22% 0.012 80) 0%, oklch(20% 0.01 80) 100%);
+  }
+
+  .tt-shell.dark .oai-panel--strong, .tt-shell.dark .oai-card--accent {
+    background: linear-gradient(180deg, oklch(28% 0.016 80) 0%, oklch(24% 0.012 80) 100%);
+  }
+}
+
+/* TT 嵌入样式源码：交由 scripts/build-tt-css.mjs 编译并作用域化到 .tt-shell */
+.tt-shell, .tt-shell *, .tt-shell::before, .tt-shell *::before, .tt-shell::after, .tt-shell *::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+.tt-shell::backdrop, .tt-shell *::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+/* ! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com *//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+.tt-shell, .tt-shell *, .tt-shell::before, .tt-shell *::before, .tt-shell::after, .tt-shell *::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+.tt-shell::before, .tt-shell *::before, .tt-shell::after, .tt-shell *::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+.tt-shell, .tt-shell {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -moz-tab-size: 4; /* 3 */
+  tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+.tt-shell {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+.tt-shell hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+.tt-shell abbr:where([title]) {
+  text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+.tt-shell h1, .tt-shell h2, .tt-shell h3, .tt-shell h4, .tt-shell h5, .tt-shell h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+.tt-shell a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+.tt-shell b, .tt-shell strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+.tt-shell code, .tt-shell kbd, .tt-shell samp, .tt-shell pre {
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+.tt-shell small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+.tt-shell sub, .tt-shell sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.tt-shell sub {
+  bottom: -0.25em;
+}
+
+.tt-shell sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+.tt-shell table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+.tt-shell button, .tt-shell input, .tt-shell optgroup, .tt-shell select, .tt-shell textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+.tt-shell button, .tt-shell select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+.tt-shell button, .tt-shell input:where([type='button']), .tt-shell input:where([type='reset']), .tt-shell input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+.tt-shell :-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+.tt-shell :-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+.tt-shell progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+.tt-shell ::-webkit-inner-spin-button, .tt-shell ::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+.tt-shell [type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+.tt-shell ::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+.tt-shell ::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+.tt-shell summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+.tt-shell blockquote, .tt-shell dl, .tt-shell dd, .tt-shell h1, .tt-shell h2, .tt-shell h3, .tt-shell h4, .tt-shell h5, .tt-shell h6, .tt-shell hr, .tt-shell figure, .tt-shell p, .tt-shell pre {
+  margin: 0;
+}
+
+.tt-shell fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+.tt-shell legend {
+  padding: 0;
+}
+
+.tt-shell ol, .tt-shell ul, .tt-shell menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+.tt-shell dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+.tt-shell textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+.tt-shell input::placeholder, .tt-shell textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+.tt-shell button, .tt-shell [role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+.tt-shell :disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+.tt-shell img, .tt-shell svg, .tt-shell video, .tt-shell canvas, .tt-shell audio, .tt-shell iframe, .tt-shell embed, .tt-shell object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+.tt-shell img, .tt-shell video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+.tt-shell [hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+.tt-shell .\!container {
+  width: 100% !important;
+}
+.tt-shell .container {
+  width: 100%;
+}
+@media (min-width: 640px) {
+  .tt-shell .\!container {
+    max-width: 640px !important;
+  }
+  .tt-shell .container {
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .tt-shell .\!container {
+    max-width: 768px !important;
+  }
+  .tt-shell .container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .tt-shell .\!container {
+    max-width: 1024px !important;
+  }
+  .tt-shell .container {
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .tt-shell .\!container {
+    max-width: 1280px !important;
+  }
+  .tt-shell .container {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .tt-shell .\!container {
+    max-width: 1536px !important;
+  }
+  .tt-shell .container {
+    max-width: 1536px;
+  }
+}
+.tt-shell .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.tt-shell .pointer-events-none {
+  pointer-events: none;
+}
+.tt-shell .pointer-events-auto {
+  pointer-events: auto;
+}
+.tt-shell .visible {
+  visibility: visible;
+}
+.tt-shell .invisible {
+  visibility: hidden;
+}
+.tt-shell .collapse {
+  visibility: collapse;
+}
+.tt-shell .static {
+  position: static;
+}
+.tt-shell .fixed {
+  position: fixed;
+}
+.tt-shell .absolute {
+  position: absolute;
+}
+.tt-shell .relative {
+  position: relative;
+}
+.tt-shell .sticky {
+  position: sticky;
+}
+.tt-shell .-inset-px {
+  inset: -1px;
+}
+.tt-shell .inset-0 {
+  inset: 0;
+}
+.tt-shell .inset-x-0 {
+  left: 0;
+  right: 0;
+}
+.tt-shell .inset-y-0 {
+  top: 0;
+  bottom: 0;
+}
+.tt-shell .-bottom-7 {
+  bottom: -1.75rem;
+}
+.tt-shell .-left-10 {
+  left: -40px;
+}
+.tt-shell .-right-8 {
+  right: -32px;
+}
+.tt-shell .-top-12 {
+  top: -48px;
+}
+.tt-shell .bottom-0 {
+  bottom: 0;
+}
+.tt-shell .bottom-1\/4 {
+  bottom: 25%;
+}
+.tt-shell .bottom-4 {
+  bottom: 16px;
+}
+.tt-shell .bottom-\[-3rem\] {
+  bottom: -3rem;
+}
+.tt-shell .bottom-\[10px\] {
+  bottom: 10px;
+}
+.tt-shell .bottom-\[6px\] {
+  bottom: 6px;
+}
+.tt-shell .bottom-full {
+  bottom: 100%;
+}
+.tt-shell .left-0 {
+  left: 0;
+}
+.tt-shell .left-1\/2 {
+  left: 50%;
+}
+.tt-shell .left-1\/3 {
+  left: 33.333333%;
+}
+.tt-shell .left-2\.5 {
+  left: 0.625rem;
+}
+.tt-shell .left-3 {
+  left: 12px;
+}
+.tt-shell .left-\[55px\] {
+  left: 55px;
+}
+.tt-shell .left-\[71px\] {
+  left: 71px;
+}
+.tt-shell .right-0 {
+  right: 0;
+}
+.tt-shell .right-1\/3 {
+  right: 33.333333%;
+}
+.tt-shell .right-2 {
+  right: 8px;
+}
+.tt-shell .right-2\.5 {
+  right: 0.625rem;
+}
+.tt-shell .right-3 {
+  right: 12px;
+}
+.tt-shell .right-4 {
+  right: 16px;
+}
+.tt-shell .top-0 {
+  top: 0;
+}
+.tt-shell .top-1 {
+  top: 4px;
+}
+.tt-shell .top-1\.5 {
+  top: 0.375rem;
+}
+.tt-shell .top-1\/2 {
+  top: 50%;
+}
+.tt-shell .top-1\/4 {
+  top: 25%;
+}
+.tt-shell .top-2 {
+  top: 8px;
+}
+.tt-shell .top-2\.5 {
+  top: 0.625rem;
+}
+.tt-shell .top-3 {
+  top: 12px;
+}
+.tt-shell .top-4 {
+  top: 16px;
+}
+.tt-shell .top-6 {
+  top: 24px;
+}
+.tt-shell .top-\[10px\] {
+  top: 10px;
+}
+.tt-shell .top-\[6px\] {
+  top: 6px;
+}
+.tt-shell .top-full {
+  top: 100%;
+}
+.tt-shell .\!z-\[9999\] {
+  z-index: 9999 !important;
+}
+.tt-shell .z-0 {
+  z-index: 0;
+}
+.tt-shell .z-10 {
+  z-index: 10;
+}
+.tt-shell .z-20 {
+  z-index: 20;
+}
+.tt-shell .z-30 {
+  z-index: 30;
+}
+.tt-shell .z-40 {
+  z-index: 40;
+}
+.tt-shell .z-50 {
+  z-index: 50;
+}
+.tt-shell .z-\[100\] {
+  z-index: 100;
+}
+.tt-shell .z-\[101\] {
+  z-index: 101;
+}
+.tt-shell .z-\[120\] {
+  z-index: 120;
+}
+.tt-shell .z-\[60\] {
+  z-index: 60;
+}
+.tt-shell .z-\[80\] {
+  z-index: 80;
+}
+.tt-shell .z-\[9999\] {
+  z-index: 9999;
+}
+.tt-shell .order-1 {
+  order: 1;
+}
+.tt-shell .order-2 {
+  order: 2;
+}
+.tt-shell .col-span-2 {
+  grid-column: span 2 / span 2;
+}
+.tt-shell .col-start-1 {
+  grid-column-start: 1;
+}
+.tt-shell .col-start-2 {
+  grid-column-start: 2;
+}
+.tt-shell .col-start-3 {
+  grid-column-start: 3;
+}
+.tt-shell .col-start-4 {
+  grid-column-start: 4;
+}
+.tt-shell .row-start-1 {
+  grid-row-start: 1;
+}
+.tt-shell .-mx-1\.5 {
+  margin-left: -0.375rem;
+  margin-right: -0.375rem;
+}
+.tt-shell .-mx-4 {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+.tt-shell .mx-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+.tt-shell .mx-1 {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.tt-shell .mx-2 {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.tt-shell .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tt-shell .my-1 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.tt-shell .my-2 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.tt-shell .-mb-3 {
+  margin-bottom: -12px;
+}
+.tt-shell .-mr-1 {
+  margin-right: -4px;
+}
+.tt-shell .-mt-0\.5 {
+  margin-top: -0.125rem;
+}
+.tt-shell .mb-0 {
+  margin-bottom: 0;
+}
+.tt-shell .mb-0\.5 {
+  margin-bottom: 0.125rem;
+}
+.tt-shell .mb-1 {
+  margin-bottom: 4px;
+}
+.tt-shell .mb-1\.5 {
+  margin-bottom: 0.375rem;
+}
+.tt-shell .mb-2 {
+  margin-bottom: 8px;
+}
+.tt-shell .mb-3 {
+  margin-bottom: 12px;
+}
+.tt-shell .mb-4 {
+  margin-bottom: 16px;
+}
+.tt-shell .mb-5 {
+  margin-bottom: 20px;
+}
+.tt-shell .mb-6 {
+  margin-bottom: 24px;
+}
+.tt-shell .mb-8 {
+  margin-bottom: 32px;
+}
+.tt-shell .ml-1 {
+  margin-left: 4px;
+}
+.tt-shell .ml-4 {
+  margin-left: 16px;
+}
+.tt-shell .ml-auto {
+  margin-left: auto;
+}
+.tt-shell .mr-2 {
+  margin-right: 8px;
+}
+.tt-shell .mr-auto {
+  margin-right: auto;
+}
+.tt-shell .mt-0\.5 {
+  margin-top: 0.125rem;
+}
+.tt-shell .mt-1 {
+  margin-top: 4px;
+}
+.tt-shell .mt-1\.5 {
+  margin-top: 0.375rem;
+}
+.tt-shell .mt-2 {
+  margin-top: 8px;
+}
+.tt-shell .mt-2\.5 {
+  margin-top: 0.625rem;
+}
+.tt-shell .mt-3 {
+  margin-top: 12px;
+}
+.tt-shell .mt-4 {
+  margin-top: 16px;
+}
+.tt-shell .mt-5 {
+  margin-top: 20px;
+}
+.tt-shell .mt-6 {
+  margin-top: 24px;
+}
+.tt-shell .mt-\[1px\] {
+  margin-top: 1px;
+}
+.tt-shell .mt-auto {
+  margin-top: auto;
+}
+.tt-shell .block {
+  display: block;
+}
+.tt-shell .inline-block {
+  display: inline-block;
+}
+.tt-shell .inline {
+  display: inline;
+}
+.tt-shell .flex {
+  display: flex;
+}
+.tt-shell .inline-flex {
+  display: inline-flex;
+}
+.tt-shell .table {
+  display: table;
+}
+.tt-shell .grid {
+  display: grid;
+}
+.tt-shell .hidden {
+  display: none;
+}
+.tt-shell .size-3 {
+  width: 12px;
+  height: 12px;
+}
+.tt-shell .h-0 {
+  height: 0;
+}
+.tt-shell .h-1 {
+  height: 4px;
+}
+.tt-shell .h-1\.5 {
+  height: 0.375rem;
+}
+.tt-shell .h-10 {
+  height: 40px;
+}
+.tt-shell .h-12 {
+  height: 48px;
+}
+.tt-shell .h-14 {
+  height: 3.5rem;
+}
+.tt-shell .h-16 {
+  height: 64px;
+}
+.tt-shell .h-2 {
+  height: 8px;
+}
+.tt-shell .h-2\.5 {
+  height: 0.625rem;
+}
+.tt-shell .h-24 {
+  height: 6rem;
+}
+.tt-shell .h-3 {
+  height: 12px;
+}
+.tt-shell .h-3\.5 {
+  height: 0.875rem;
+}
+.tt-shell .h-32 {
+  height: 8rem;
+}
+.tt-shell .h-36 {
+  height: 9rem;
+}
+.tt-shell .h-4 {
+  height: 16px;
+}
+.tt-shell .h-40 {
+  height: 10rem;
+}
+.tt-shell .h-5 {
+  height: 20px;
+}
+.tt-shell .h-6 {
+  height: 24px;
+}
+.tt-shell .h-7 {
+  height: 1.75rem;
+}
+.tt-shell .h-8 {
+  height: 32px;
+}
+.tt-shell .h-80 {
+  height: 20rem;
+}
+.tt-shell .h-9 {
+  height: 2.25rem;
+}
+.tt-shell .h-96 {
+  height: 24rem;
+}
+.tt-shell .h-\[14px\] {
+  height: 14px;
+}
+.tt-shell .h-\[15px\] {
+  height: 15px;
+}
+.tt-shell .h-\[16px\] {
+  height: 16px;
+}
+.tt-shell .h-\[18px\] {
+  height: 18px;
+}
+.tt-shell .h-\[22px\] {
+  height: 22px;
+}
+.tt-shell .h-\[2px\] {
+  height: 2px;
+}
+.tt-shell .h-\[3px\] {
+  height: 3px;
+}
+.tt-shell .h-\[58px\] {
+  height: 58px;
+}
+.tt-shell .h-\[60vh\] {
+  height: 60vh;
+}
+.tt-shell .h-\[68px\] {
+  height: 68px;
+}
+.tt-shell .h-\[88vh\] {
+  height: 88vh;
+}
+.tt-shell .h-\[92px\] {
+  height: 92px;
+}
+.tt-shell .h-\[9px\] {
+  height: 9px;
+}
+.tt-shell .h-auto {
+  height: auto;
+}
+.tt-shell .h-full {
+  height: 100%;
+}
+.tt-shell .h-px {
+  height: 1px;
+}
+.tt-shell .max-h-32 {
+  max-height: 8rem;
+}
+.tt-shell .max-h-64 {
+  max-height: 16rem;
+}
+.tt-shell .max-h-\[150px\] {
+  max-height: 150px;
+}
+.tt-shell .max-h-\[384px\] {
+  max-height: 384px;
+}
+.tt-shell .max-h-\[88vh\] {
+  max-height: 88vh;
+}
+.tt-shell .max-h-\[calc\(100vh-2rem\)\] {
+  max-height: calc(100vh - 2rem);
+}
+.tt-shell .max-h-\[min\(18rem\2c var\(--available-height\)\)\] {
+  max-height: min(18rem, var(--available-height));
+}
+.tt-shell .max-h-\[min\(56vh\2c 22rem\)\] {
+  max-height: min(56vh, 22rem);
+}
+.tt-shell .min-h-0 {
+  min-height: 0;
+}
+.tt-shell .min-h-14 {
+  min-height: 3.5rem;
+}
+.tt-shell .min-h-7 {
+  min-height: 1.75rem;
+}
+.tt-shell .min-h-8 {
+  min-height: 32px;
+}
+.tt-shell .min-h-\[68px\] {
+  min-height: 68px;
+}
+.tt-shell .min-h-\[85vh\] {
+  min-height: 85vh;
+}
+.tt-shell .min-h-screen {
+  min-height: 100vh;
+}
+.tt-shell .w-0 {
+  width: 0;
+}
+.tt-shell .w-1\.5 {
+  width: 0.375rem;
+}
+.tt-shell .w-10 {
+  width: 40px;
+}
+.tt-shell .w-12 {
+  width: 48px;
+}
+.tt-shell .w-14 {
+  width: 3.5rem;
+}
+.tt-shell .w-16 {
+  width: 64px;
+}
+.tt-shell .w-2 {
+  width: 8px;
+}
+.tt-shell .w-2\.5 {
+  width: 0.625rem;
+}
+.tt-shell .w-20 {
+  width: 80px;
+}
+.tt-shell .w-24 {
+  width: 6rem;
+}
+.tt-shell .w-28 {
+  width: 7rem;
+}
+.tt-shell .w-3 {
+  width: 12px;
+}
+.tt-shell .w-3\.5 {
+  width: 0.875rem;
+}
+.tt-shell .w-3\/5 {
+  width: 60%;
+}
+.tt-shell .w-32 {
+  width: 8rem;
+}
+.tt-shell .w-4 {
+  width: 16px;
+}
+.tt-shell .w-48 {
+  width: 12rem;
+}
+.tt-shell .w-5 {
+  width: 20px;
+}
+.tt-shell .w-56 {
+  width: 14rem;
+}
+.tt-shell .w-6 {
+  width: 24px;
+}
+.tt-shell .w-64 {
+  width: 16rem;
+}
+.tt-shell .w-7 {
+  width: 1.75rem;
+}
+.tt-shell .w-72 {
+  width: 18rem;
+}
+.tt-shell .w-8 {
+  width: 32px;
+}
+.tt-shell .w-80 {
+  width: 20rem;
+}
+.tt-shell .w-9 {
+  width: 2.25rem;
+}
+.tt-shell .w-96 {
+  width: 24rem;
+}
+.tt-shell .w-\[14px\] {
+  width: 14px;
+}
+.tt-shell .w-\[15px\] {
+  width: 15px;
+}
+.tt-shell .w-\[18px\] {
+  width: 18px;
+}
+.tt-shell .w-\[1px\] {
+  width: 1px;
+}
+.tt-shell .w-\[220px\] {
+  width: 220px;
+}
+.tt-shell .w-\[260px\] {
+  width: 260px;
+}
+.tt-shell .w-\[30px\] {
+  width: 30px;
+}
+.tt-shell .w-\[3px\] {
+  width: 3px;
+}
+.tt-shell .w-\[4\.25rem\] {
+  width: 4.25rem;
+}
+.tt-shell .w-\[4\.5rem\] {
+  width: 4.5rem;
+}
+.tt-shell .w-\[68px\] {
+  width: 68px;
+}
+.tt-shell .w-\[72px\] {
+  width: 72px;
+}
+.tt-shell .w-\[min\(72vw\2c 18rem\)\] {
+  width: min(72vw, 18rem);
+}
+.tt-shell .w-fit {
+  width: fit-content;
+}
+.tt-shell .w-full {
+  width: 100%;
+}
+.tt-shell .w-max {
+  width: max-content;
+}
+.tt-shell .min-w-0 {
+  min-width: 0;
+}
+.tt-shell .min-w-14 {
+  min-width: 3.5rem;
+}
+.tt-shell .min-w-7 {
+  min-width: 1.75rem;
+}
+.tt-shell .min-w-8 {
+  min-width: 32px;
+}
+.tt-shell .min-w-\[100px\] {
+  min-width: 100px;
+}
+.tt-shell .min-w-\[140px\] {
+  min-width: 140px;
+}
+.tt-shell .min-w-\[200px\] {
+  min-width: 200px;
+}
+.tt-shell .min-w-\[220px\] {
+  min-width: 220px;
+}
+.tt-shell .min-w-\[260px\] {
+  min-width: 260px;
+}
+.tt-shell .min-w-\[28px\] {
+  min-width: 28px;
+}
+.tt-shell .min-w-\[340px\] {
+  min-width: 340px;
+}
+.tt-shell .min-w-\[420px\] {
+  min-width: 420px;
+}
+.tt-shell .min-w-\[440px\] {
+  min-width: 440px;
+}
+.tt-shell .min-w-\[48px\] {
+  min-width: 48px;
+}
+.tt-shell .min-w-\[68px\] {
+  min-width: 68px;
+}
+.tt-shell .min-w-\[6rem\] {
+  min-width: 6rem;
+}
+.tt-shell .min-w-\[96px\] {
+  min-width: 96px;
+}
+.tt-shell .min-w-\[var\(--anchor-width\)\] {
+  min-width: var(--anchor-width);
+}
+.tt-shell .min-w-max {
+  min-width: max-content;
+}
+.tt-shell .max-w-14 {
+  max-width: 3.5rem;
+}
+.tt-shell .max-w-4xl {
+  max-width: 56rem;
+}
+.tt-shell .max-w-5xl {
+  max-width: 64rem;
+}
+.tt-shell .max-w-6xl {
+  max-width: 72rem;
+}
+.tt-shell .max-w-\[120px\] {
+  max-width: 120px;
+}
+.tt-shell .max-w-\[12rem\] {
+  max-width: 12rem;
+}
+.tt-shell .max-w-\[130px\] {
+  max-width: 130px;
+}
+.tt-shell .max-w-\[150px\] {
+  max-width: 150px;
+}
+.tt-shell .max-w-\[170px\] {
+  max-width: 170px;
+}
+.tt-shell .max-w-\[260px\] {
+  max-width: 260px;
+}
+.tt-shell .max-w-\[280px\] {
+  max-width: 280px;
+}
+.tt-shell .max-w-\[320px\] {
+  max-width: 320px;
+}
+.tt-shell .max-w-\[400px\] {
+  max-width: 400px;
+}
+.tt-shell .max-w-\[420px\] {
+  max-width: 420px;
+}
+.tt-shell .max-w-\[460px\] {
+  max-width: 460px;
+}
+.tt-shell .max-w-\[80px\] {
+  max-width: 80px;
+}
+.tt-shell .max-w-\[80vw\] {
+  max-width: 80vw;
+}
+.tt-shell .max-w-full {
+  max-width: 100%;
+}
+.tt-shell .max-w-lg {
+  max-width: 32rem;
+}
+.tt-shell .max-w-md {
+  max-width: 28rem;
+}
+.tt-shell .max-w-sm {
+  max-width: 24rem;
+}
+.tt-shell .max-w-xl {
+  max-width: 36rem;
+}
+.tt-shell .max-w-xs {
+  max-width: 20rem;
+}
+.tt-shell .flex-1 {
+  flex: 1 1 0%;
+}
+.tt-shell .flex-shrink-0 {
+  flex-shrink: 0;
+}
+.tt-shell .flex-shrink-\[2\] {
+  flex-shrink: 2;
+}
+.tt-shell .shrink-0 {
+  flex-shrink: 0;
+}
+.tt-shell .grow {
+  flex-grow: 1;
+}
+.tt-shell .border-collapse {
+  border-collapse: collapse;
+}
+.tt-shell .origin-\[var\(--transform-origin\)\] {
+  transform-origin: var(--transform-origin);
+}
+.tt-shell .origin-bottom {
+  transform-origin: bottom;
+}
+.tt-shell .origin-left {
+  transform-origin: left;
+}
+.tt-shell .-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .-translate-y-1\/2 {
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-x-1\/2 {
+  --tw-translate-x: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-x-\[18px\] {
+  --tw-translate-x: 18px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-x-\[3px\] {
+  --tw-translate-x: 3px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-y-1 {
+  --tw-translate-y: 4px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-y-1\/2 {
+  --tw-translate-y: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-y-2 {
+  --tw-translate-y: 8px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .translate-y-\[0\.5px\] {
+  --tw-translate-y: 0.5px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .rotate-45 {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .scale-110 {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .scale-90 {
+  --tw-scale-x: .9;
+  --tw-scale-y: .9;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .scale-95 {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.tt-shell .animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+.tt-shell .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.tt-shell .animate-spin {
+  animation: spin 1s linear infinite;
+}
+.tt-shell .cursor-default {
+  cursor: default;
+}
+.tt-shell .cursor-grab {
+  cursor: grab;
+}
+.tt-shell .cursor-help {
+  cursor: help;
+}
+.tt-shell .cursor-not-allowed {
+  cursor: not-allowed;
+}
+.tt-shell .cursor-pointer {
+  cursor: pointer;
+}
+.tt-shell .touch-none {
+  touch-action: none;
+}
+.tt-shell .select-none {
+  user-select: none;
+}
+.tt-shell .grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.tt-shell .grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.tt-shell .grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.tt-shell .grid-cols-\[minmax\(0\2c 1fr\)_48px_48px_72px_72px_60px_60px\] {
+  grid-template-columns: minmax(0,1fr) 48px 48px 72px 72px 60px 60px;
+}
+.tt-shell .grid-cols-\[minmax\(0\2c 1fr\)_56px_60px\] {
+  grid-template-columns: minmax(0,1fr) 56px 60px;
+}
+.tt-shell .grid-cols-\[minmax\(0\2c 1fr\)_minmax\(8rem\2c max-content\)_minmax\(5\.5rem\2c max-content\)_4rem\] {
+  grid-template-columns: minmax(0,1fr) minmax(8rem,max-content) minmax(5.5rem,max-content) 4rem;
+}
+.tt-shell .grid-cols-\[minmax\(0\2c 1fr\)_minmax\(9rem\2c max-content\)_4rem\] {
+  grid-template-columns: minmax(0,1fr) minmax(9rem,max-content) 4rem;
+}
+.tt-shell .grid-cols-\[repeat\(auto-fill\2c minmax\(140px\2c 1fr\)\)\] {
+  grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
+}
+.tt-shell .flex-row {
+  flex-direction: row;
+}
+.tt-shell .flex-col {
+  flex-direction: column;
+}
+.tt-shell .flex-col-reverse {
+  flex-direction: column-reverse;
+}
+.tt-shell .flex-wrap {
+  flex-wrap: wrap;
+}
+.tt-shell .items-start {
+  align-items: flex-start;
+}
+.tt-shell .items-end {
+  align-items: flex-end;
+}
+.tt-shell .items-center {
+  align-items: center;
+}
+.tt-shell .items-baseline {
+  align-items: baseline;
+}
+.tt-shell .justify-start {
+  justify-content: flex-start;
+}
+.tt-shell .justify-end {
+  justify-content: flex-end;
+}
+.tt-shell .justify-center {
+  justify-content: center;
+}
+.tt-shell .justify-between {
+  justify-content: space-between;
+}
+.tt-shell .gap-0\.5 {
+  gap: 0.125rem;
+}
+.tt-shell .gap-1 {
+  gap: 4px;
+}
+.tt-shell .gap-1\.5 {
+  gap: 0.375rem;
+}
+.tt-shell .gap-2 {
+  gap: 8px;
+}
+.tt-shell .gap-2\.5 {
+  gap: 0.625rem;
+}
+.tt-shell .gap-3 {
+  gap: 12px;
+}
+.tt-shell .gap-4 {
+  gap: 16px;
+}
+.tt-shell .gap-5 {
+  gap: 20px;
+}
+.tt-shell .gap-6 {
+  gap: 24px;
+}
+.tt-shell .gap-8 {
+  gap: 32px;
+}
+.tt-shell .gap-x-2 {
+  column-gap: 8px;
+}
+.tt-shell .gap-x-3 {
+  column-gap: 12px;
+}
+.tt-shell .gap-x-4 {
+  column-gap: 16px;
+}
+.tt-shell .gap-x-5 {
+  column-gap: 20px;
+}
+.tt-shell .gap-y-0\.5 {
+  row-gap: 0.125rem;
+}
+.tt-shell .gap-y-1\.5 {
+  row-gap: 0.375rem;
+}
+.tt-shell .gap-y-2 {
+  row-gap: 8px;
+}
+.tt-shell .gap-y-5 {
+  row-gap: 20px;
+}
+.tt-shell .\!space-y-0 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0 !important;
+  margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse))) !important;
+  margin-bottom: calc(0px * var(--tw-space-y-reverse)) !important;
+}
+.tt-shell .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.125rem * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(4px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(4px * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-2\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.625rem * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(12px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(12px * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-3\.5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.875rem * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(16px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(16px * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(20px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(20px * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(24px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(24px * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(32px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(32px * var(--tw-space-y-reverse));
+}
+.tt-shell .space-y-\[2px\] > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2px * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2px * var(--tw-space-y-reverse));
+}
+.tt-shell .divide-y > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-y-reverse: 0;
+  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
+}
+.tt-shell .divide-oai-gray-100 > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-divide-opacity, 1));
+}
+.tt-shell .divide-oai-gray-200\/60 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(229 229 229 / 0.6);
+}
+.tt-shell .divide-oai-gray-200\/70 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(229 229 229 / 0.7);
+}
+.tt-shell .divide-zinc-200\/50 > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(228 228 231 / 0.5);
+}
+.tt-shell .self-end {
+  align-self: flex-end;
+}
+.tt-shell .self-stretch {
+  align-self: stretch;
+}
+.tt-shell .overflow-auto {
+  overflow: auto;
+}
+.tt-shell .overflow-hidden {
+  overflow: hidden;
+}
+.tt-shell .overflow-x-auto {
+  overflow-x: auto;
+}
+.tt-shell .overflow-y-auto {
+  overflow-y: auto;
+}
+.tt-shell .overflow-y-hidden {
+  overflow-y: hidden;
+}
+.tt-shell .truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tt-shell .whitespace-nowrap {
+  white-space: nowrap;
+}
+.tt-shell .whitespace-pre {
+  white-space: pre;
+}
+.tt-shell .whitespace-pre-line {
+  white-space: pre-line;
+}
+.tt-shell .rounded {
+  border-radius: 0.25rem;
+}
+.tt-shell .rounded-2xl {
+  border-radius: 1rem;
+}
+.tt-shell .rounded-\[1px\] {
+  border-radius: 1px;
+}
+.tt-shell .rounded-\[2px\] {
+  border-radius: 2px;
+}
+.tt-shell .rounded-full {
+  border-radius: 9999px;
+}
+.tt-shell .rounded-lg {
+  border-radius: 12px;
+}
+.tt-shell .rounded-md {
+  border-radius: 8px;
+}
+.tt-shell .rounded-sm {
+  border-radius: 4px;
+}
+.tt-shell .rounded-xl {
+  border-radius: 16px;
+}
+.tt-shell .rounded-b-\[10px\] {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.tt-shell .border {
+  border-width: 1px;
+}
+.tt-shell .border-0 {
+  border-width: 0px;
+}
+.tt-shell .border-4 {
+  border-width: 4px;
+}
+.tt-shell .border-y {
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
+.tt-shell .border-b {
+  border-bottom-width: 1px;
+}
+.tt-shell .border-l {
+  border-left-width: 1px;
+}
+.tt-shell .border-l-2 {
+  border-left-width: 2px;
+}
+.tt-shell .border-r {
+  border-right-width: 1px;
+}
+.tt-shell .border-t {
+  border-top-width: 1px;
+}
+.tt-shell .border-dashed {
+  border-style: dashed;
+}
+.tt-shell .\!border-oai-gray-200 {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(229 229 229 / var(--tw-border-opacity, 1)) !important;
+}
+.tt-shell .border-\[\#c9604f\]\/20 {
+  border-color: rgb(201 96 79 / 0.2);
+}
+.tt-shell .border-\[\#d97757\]\/20 {
+  border-color: rgb(217 119 87 / 0.2);
+}
+.tt-shell .border-\[\#d9a05b\]\/20 {
+  border-color: rgb(217 160 91 / 0.2);
+}
+.tt-shell .border-amber-300\/60 {
+  border-color: rgb(252 211 77 / 0.6);
+}
+.tt-shell .border-amber-500\/20 {
+  border-color: rgb(245 158 11 / 0.2);
+}
+.tt-shell .border-gray-500\/20 {
+  border-color: rgb(107 114 128 / 0.2);
+}
+.tt-shell .border-oai-error {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-oai-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(245 245 245 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-oai-gray-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 229 229 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-oai-gray-200\/50 {
+  border-color: rgb(229 229 229 / 0.5);
+}
+.tt-shell .border-oai-gray-200\/60 {
+  border-color: rgb(229 229 229 / 0.6);
+}
+.tt-shell .border-oai-gray-200\/70 {
+  border-color: rgb(229 229 229 / 0.7);
+}
+.tt-shell .border-oai-gray-200\/80 {
+  border-color: rgb(229 229 229 / 0.8);
+}
+.tt-shell .border-oai-gray-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-oai-gray-50 {
+  --tw-border-opacity: 1;
+  border-color: rgb(250 250 250 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-oai-gray-800 {
+  --tw-border-opacity: 1;
+  border-color: rgb(38 38 38 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-red-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 165 165 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-rose-200\/80 {
+  border-color: rgb(254 205 211 / 0.8);
+}
+.tt-shell .border-transparent {
+  border-color: transparent;
+}
+.tt-shell .border-zinc-200 {
+  --tw-border-opacity: 1;
+  border-color: rgb(228 228 231 / var(--tw-border-opacity, 1));
+}
+.tt-shell .border-zinc-200\/50 {
+  border-color: rgb(228 228 231 / 0.5);
+}
+.tt-shell .border-t-oai-gray-900 {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(23 23 23 / var(--tw-border-opacity, 1));
+}
+.tt-shell .\!bg-red-600 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1)) !important;
+}
+.tt-shell .bg-\[\#241d17\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 29 23 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-\[\#c9604f\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(201 96 79 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-\[\#c9604f\]\/10 {
+  background-color: rgb(201 96 79 / 0.1);
+}
+.tt-shell .bg-\[\#d97757\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 119 87 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-\[\#d97757\]\/10 {
+  background-color: rgb(217 119 87 / 0.1);
+}
+.tt-shell .bg-\[\#d97757\]\/20 {
+  background-color: rgb(217 119 87 / 0.2);
+}
+.tt-shell .bg-\[\#d97757\]\/\[0\.05\] {
+  background-color: rgb(217 119 87 / 0.05);
+}
+.tt-shell .bg-\[\#d9a05b\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 160 91 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-\[\#d9a05b\]\/10 {
+  background-color: rgb(217 160 91 / 0.1);
+}
+.tt-shell .bg-\[\#e89270\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 146 112 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-\[\#e8a33d\]\/15 {
+  background-color: rgb(232 163 61 / 0.15);
+}
+.tt-shell .bg-\[\#f59e0b\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 158 11 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-amber-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 191 36 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-amber-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 251 235 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-amber-50\/50 {
+  background-color: rgb(255 251 235 / 0.5);
+}
+.tt-shell .bg-amber-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 158 11 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-amber-500\/10 {
+  background-color: rgb(245 158 11 / 0.1);
+}
+.tt-shell .bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-black\/15 {
+  background-color: rgb(0 0 0 / 0.15);
+}
+.tt-shell .bg-black\/40 {
+  background-color: rgb(0 0 0 / 0.4);
+}
+.tt-shell .bg-black\/45 {
+  background-color: rgb(0 0 0 / 0.45);
+}
+.tt-shell .bg-emerald-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(52 211 153 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-emerald-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 253 245 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-emerald-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 185 129 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-gray-500\/\[0\.04\] {
+  background-color: rgb(107 114 128 / 0.04);
+}
+.tt-shell .bg-oai-amber-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 243 239 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 10 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-black\/40 {
+  background-color: rgb(10 10 10 / 0.4);
+}
+.tt-shell .bg-oai-brand {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 119 87 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-brand-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 229 220 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-brand-100\/50 {
+  background-color: rgb(250 229 220 / 0.5);
+}
+.tt-shell .bg-oai-brand-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 243 239 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-brand-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(217 119 87 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-brand-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(201 100 66 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-brand-600\/30 {
+  background-color: rgb(201 100 66 / 0.3);
+}
+.tt-shell .bg-oai-brand\/10 {
+  background-color: rgb(217 119 87 / 0.1);
+}
+.tt-shell .bg-oai-brand\/15 {
+  background-color: rgb(217 119 87 / 0.15);
+}
+.tt-shell .bg-oai-brand\/50 {
+  background-color: rgb(217 119 87 / 0.5);
+}
+.tt-shell .bg-oai-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-gray-100\/70 {
+  background-color: rgb(245 245 245 / 0.7);
+}
+.tt-shell .bg-oai-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-gray-200\/70 {
+  background-color: rgb(229 229 229 / 0.7);
+}
+.tt-shell .bg-oai-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 212 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-gray-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-gray-50\/20 {
+  background-color: rgb(250 250 250 / 0.2);
+}
+.tt-shell .bg-oai-gray-50\/50 {
+  background-color: rgb(250 250 250 / 0.5);
+}
+.tt-shell .bg-oai-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-oai-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-red-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 242 242 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-red-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-rose-50\/60 {
+  background-color: rgb(255 241 242 / 0.6);
+}
+.tt-shell .bg-transparent {
+  background-color: transparent;
+}
+.tt-shell .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-white\/20 {
+  background-color: rgb(255 255 255 / 0.2);
+}
+.tt-shell .bg-white\/30 {
+  background-color: rgb(255 255 255 / 0.3);
+}
+.tt-shell .bg-white\/35 {
+  background-color: rgb(255 255 255 / 0.35);
+}
+.tt-shell .bg-white\/50 {
+  background-color: rgb(255 255 255 / 0.5);
+}
+.tt-shell .bg-white\/60 {
+  background-color: rgb(255 255 255 / 0.6);
+}
+.tt-shell .bg-white\/70 {
+  background-color: rgb(255 255 255 / 0.7);
+}
+.tt-shell .bg-white\/80 {
+  background-color: rgb(255 255 255 / 0.8);
+}
+.tt-shell .bg-white\/90 {
+  background-color: rgb(255 255 255 / 0.9);
+}
+.tt-shell .bg-white\/95 {
+  background-color: rgb(255 255 255 / 0.95);
+}
+.tt-shell .bg-zinc-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 244 245 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .bg-zinc-50\/50 {
+  background-color: rgb(250 250 250 / 0.5);
+}
+.tt-shell .bg-\[linear-gradient\(to_right\2c \#80808007_1px\2c transparent_1px\)\2c linear-gradient\(to_bottom\2c \#80808007_1px\2c transparent_1px\)\] {
+  background-image: linear-gradient(to right,#80808007 1px,transparent 1px),linear-gradient(to bottom,#80808007 1px,transparent 1px);
+}
+.tt-shell .bg-\[radial-gradient\(circle_at_50\%_0\%\2c rgba\(217\2c 119\2c 87\2c 0\.04\)\2c transparent_50\%\)\] {
+  background-image: radial-gradient(circle at 50% 0%,rgba(217,119,87,0.04),transparent 50%);
+}
+.tt-shell .bg-gradient-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.tt-shell .bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.tt-shell .bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+.tt-shell .from-oai-black {
+  --tw-gradient-from: #0a0a0a var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(10 10 10 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.tt-shell .from-oai-gray-900\/5 {
+  --tw-gradient-from: rgb(23 23 23 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(23 23 23 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.tt-shell .from-white\/10 {
+  --tw-gradient-from: rgb(255 255 255 / 0.1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.tt-shell .to-oai-gray-600 {
+  --tw-gradient-to: #525252 var(--tw-gradient-to-position);
+}
+.tt-shell .to-transparent {
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+.tt-shell .bg-\[size\:40px_40px\] {
+  background-size: 40px 40px;
+}
+.tt-shell .bg-clip-text {
+  background-clip: text;
+}
+.tt-shell .fill-black {
+  fill: #000;
+}
+.tt-shell .fill-current {
+  fill: currentColor;
+}
+.tt-shell .fill-oai-gray-700 {
+  fill: #404040;
+}
+.tt-shell .fill-rose-500 {
+  fill: #f43f5e;
+}
+.tt-shell .fill-transparent {
+  fill: transparent;
+}
+.tt-shell .stroke-\[1\.5\] {
+  stroke-width: 1.5;
+}
+.tt-shell .object-contain {
+  object-fit: contain;
+}
+.tt-shell .object-cover {
+  object-fit: cover;
+}
+.tt-shell .p-0 {
+  padding: 0;
+}
+.tt-shell .p-0\.5 {
+  padding: 0.125rem;
+}
+.tt-shell .p-1 {
+  padding: 4px;
+}
+.tt-shell .p-1\.5 {
+  padding: 0.375rem;
+}
+.tt-shell .p-2 {
+  padding: 8px;
+}
+.tt-shell .p-3 {
+  padding: 12px;
+}
+.tt-shell .p-3\.5 {
+  padding: 0.875rem;
+}
+.tt-shell .p-4 {
+  padding: 16px;
+}
+.tt-shell .p-5 {
+  padding: 20px;
+}
+.tt-shell .p-6 {
+  padding: 24px;
+}
+.tt-shell .p-\[3px\] {
+  padding: 3px;
+}
+.tt-shell .\!px-3 {
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+.tt-shell .\!py-3\.5 {
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+}
+.tt-shell .px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.tt-shell .px-1 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.tt-shell .px-1\.5 {
+  padding-left: 0.375rem;
+  padding-right: 0.375rem;
+}
+.tt-shell .px-2 {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.tt-shell .px-2\.5 {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+.tt-shell .px-3 {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.tt-shell .px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+.tt-shell .px-4 {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.tt-shell .px-5 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.tt-shell .px-6 {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.tt-shell .py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.tt-shell .py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+.tt-shell .py-1 {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+.tt-shell .py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.tt-shell .py-16 {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.tt-shell .py-2 {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.tt-shell .py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+.tt-shell .py-20 {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+.tt-shell .py-3 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.tt-shell .py-4 {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.tt-shell .py-5 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.tt-shell .py-6 {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.tt-shell .py-8 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.tt-shell .py-\[5px\] {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.tt-shell .pb-1 {
+  padding-bottom: 4px;
+}
+.tt-shell .pb-1\.5 {
+  padding-bottom: 0.375rem;
+}
+.tt-shell .pb-12 {
+  padding-bottom: 48px;
+}
+.tt-shell .pb-2 {
+  padding-bottom: 8px;
+}
+.tt-shell .pb-3 {
+  padding-bottom: 12px;
+}
+.tt-shell .pb-4 {
+  padding-bottom: 16px;
+}
+.tt-shell .pl-1 {
+  padding-left: 4px;
+}
+.tt-shell .pl-1\.5 {
+  padding-left: 0.375rem;
+}
+.tt-shell .pl-2 {
+  padding-left: 8px;
+}
+.tt-shell .pl-3\.5 {
+  padding-left: 0.875rem;
+}
+.tt-shell .pl-8 {
+  padding-left: 32px;
+}
+.tt-shell .pl-9 {
+  padding-left: 2.25rem;
+}
+.tt-shell .pl-\[30px\] {
+  padding-left: 30px;
+}
+.tt-shell .pr-0 {
+  padding-right: 0;
+}
+.tt-shell .pr-1 {
+  padding-right: 4px;
+}
+.tt-shell .pr-1\.5 {
+  padding-right: 0.375rem;
+}
+.tt-shell .pr-10 {
+  padding-right: 40px;
+}
+.tt-shell .pr-2 {
+  padding-right: 8px;
+}
+.tt-shell .pr-2\.5 {
+  padding-right: 0.625rem;
+}
+.tt-shell .pr-3 {
+  padding-right: 12px;
+}
+.tt-shell .pr-3\.5 {
+  padding-right: 0.875rem;
+}
+.tt-shell .pr-6 {
+  padding-right: 24px;
+}
+.tt-shell .pr-8 {
+  padding-right: 32px;
+}
+.tt-shell .pt-1 {
+  padding-top: 4px;
+}
+.tt-shell .pt-1\.5 {
+  padding-top: 0.375rem;
+}
+.tt-shell .pt-2 {
+  padding-top: 8px;
+}
+.tt-shell .pt-2\.5 {
+  padding-top: 0.625rem;
+}
+.tt-shell .pt-3 {
+  padding-top: 12px;
+}
+.tt-shell .pt-4 {
+  padding-top: 16px;
+}
+.tt-shell .pt-5 {
+  padding-top: 20px;
+}
+.tt-shell .pt-6 {
+  padding-top: 24px;
+}
+.tt-shell .pt-8 {
+  padding-top: 32px;
+}
+.tt-shell .pt-\[16vh\] {
+  padding-top: 16vh;
+}
+.tt-shell .text-left {
+  text-align: left;
+}
+.tt-shell .text-center {
+  text-align: center;
+}
+.tt-shell .text-right {
+  text-align: right;
+}
+.tt-shell .align-middle {
+  vertical-align: middle;
+}
+.tt-shell .font-mono {
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, Menlo, Monaco, Consolas, monospace;
+}
+.tt-shell .font-oai {
+  font-family: 'OpenAI Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+.tt-shell .font-sans {
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.tt-shell .text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.tt-shell .text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+.tt-shell .text-\[10\.5px\] {
+  font-size: 10.5px;
+}
+.tt-shell .text-\[10px\] {
+  font-size: 10px;
+}
+.tt-shell .text-\[11px\] {
+  font-size: 11px;
+}
+.tt-shell .text-\[12px\] {
+  font-size: 12px;
+}
+.tt-shell .text-\[13px\] {
+  font-size: 13px;
+}
+.tt-shell .text-\[8px\] {
+  font-size: 8px;
+}
+.tt-shell .text-\[9px\] {
+  font-size: 9px;
+}
+.tt-shell .text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.tt-shell .text-body-sm {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.tt-shell .text-caption {
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+.tt-shell .text-label {
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+.tt-shell .text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.tt-shell .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.tt-shell .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.tt-shell .text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.tt-shell .font-black {
+  font-weight: 900;
+}
+.tt-shell .font-bold {
+  font-weight: 700;
+}
+.tt-shell .font-extrabold {
+  font-weight: 800;
+}
+.tt-shell .font-medium {
+  font-weight: 500;
+}
+.tt-shell .font-normal {
+  font-weight: 400;
+}
+.tt-shell .font-semibold {
+  font-weight: 600;
+}
+.tt-shell .uppercase {
+  text-transform: uppercase;
+}
+.tt-shell .italic {
+  font-style: italic;
+}
+.tt-shell .tabular-nums {
+  --tw-numeric-spacing: tabular-nums;
+  font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
+}
+.tt-shell .leading-5 {
+  line-height: 1.25rem;
+}
+.tt-shell .leading-6 {
+  line-height: 1.5rem;
+}
+.tt-shell .leading-\[1\.15\] {
+  line-height: 1.15;
+}
+.tt-shell .leading-none {
+  line-height: 1;
+}
+.tt-shell .leading-normal {
+  line-height: 1.5;
+}
+.tt-shell .leading-relaxed {
+  line-height: 1.625;
+}
+.tt-shell .leading-snug {
+  line-height: 1.375;
+}
+.tt-shell .leading-tight {
+  line-height: 1.25;
+}
+.tt-shell .tracking-\[0\.12em\] {
+  letter-spacing: 0.12em;
+}
+.tt-shell .tracking-tight {
+  letter-spacing: -0.025em;
+}
+.tt-shell .tracking-wide {
+  letter-spacing: 0.025em;
+}
+.tt-shell .tracking-wider {
+  letter-spacing: 0.05em;
+}
+.tt-shell .tracking-widest {
+  letter-spacing: 0.1em;
+}
+.tt-shell .text-\[\#b97f3e\] {
+  --tw-text-opacity: 1;
+  color: rgb(185 127 62 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-\[\#c9604f\] {
+  --tw-text-opacity: 1;
+  color: rgb(201 96 79 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-\[\#d97757\] {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 87 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-amber-500 {
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-amber-500\/80 {
+  color: rgb(245 158 11 / 0.8);
+}
+.tt-shell .text-amber-600 {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-emerald-700 {
+  --tw-text-opacity: 1;
+  color: rgb(4 120 87 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-amber-dark {
+  --tw-text-opacity: 1;
+  color: rgb(201 100 66 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-black {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 10 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-brand {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 87 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-brand-700 {
+  --tw-text-opacity: 1;
+  color: rgb(168 79 50 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-error {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-100 {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-700 {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-800 {
+  --tw-text-opacity: 1;
+  color: rgb(38 38 38 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-oai-gray-900 {
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-rose-500 {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-rose-600 {
+  --tw-text-opacity: 1;
+  color: rgb(225 29 72 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-transparent {
+  color: transparent;
+}
+.tt-shell .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-white\/90 {
+  color: rgb(255 255 255 / 0.9);
+}
+.tt-shell .text-zinc-400 {
+  --tw-text-opacity: 1;
+  color: rgb(161 161 170 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-zinc-500 {
+  --tw-text-opacity: 1;
+  color: rgb(113 113 122 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-zinc-600 {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 91 / var(--tw-text-opacity, 1));
+}
+.tt-shell .text-zinc-900 {
+  --tw-text-opacity: 1;
+  color: rgb(24 24 27 / var(--tw-text-opacity, 1));
+}
+.tt-shell .underline {
+  text-decoration-line: underline;
+}
+.tt-shell .no-underline {
+  text-decoration-line: none;
+}
+.tt-shell .decoration-oai-gray-300 {
+  text-decoration-color: #d4d4d4;
+}
+.tt-shell .decoration-dotted {
+  text-decoration-style: dotted;
+}
+.tt-shell .underline-offset-2 {
+  text-underline-offset: 2px;
+}
+.tt-shell .underline-offset-4 {
+  text-underline-offset: 4px;
+}
+.tt-shell .antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.tt-shell .placeholder-oai-gray-400::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-placeholder-opacity, 1));
+}
+.tt-shell .opacity-0 {
+  opacity: 0;
+}
+.tt-shell .opacity-100 {
+  opacity: 1;
+}
+.tt-shell .opacity-15 {
+  opacity: 0.15;
+}
+.tt-shell .opacity-30 {
+  opacity: 0.3;
+}
+.tt-shell .opacity-40 {
+  opacity: 0.4;
+}
+.tt-shell .opacity-50 {
+  opacity: 0.5;
+}
+.tt-shell .opacity-60 {
+  opacity: 0.6;
+}
+.tt-shell .opacity-70 {
+  opacity: 0.7;
+}
+.tt-shell .opacity-75 {
+  opacity: 0.75;
+}
+.tt-shell .opacity-80 {
+  opacity: 0.8;
+}
+.tt-shell .opacity-85 {
+  opacity: 0.85;
+}
+.tt-shell .opacity-90 {
+  opacity: 0.9;
+}
+.tt-shell .shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-\[0_12px_28px_-14px_rgba\(15\2c 23\2c 42\2c 0\.22\)\] {
+  --tw-shadow: 0 12px 28px -14px rgba(15,23,42,0.22);
+  --tw-shadow-colored: 0 12px 28px -14px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-\[0_12px_32px_-12px_rgba\(0\2c 0\2c 0\2c 0\.18\)\] {
+  --tw-shadow: 0 12px 32px -12px rgba(0,0,0,0.18);
+  --tw-shadow-colored: 0 12px 32px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-\[0_20px_60px_-20px_rgba\(0\2c 0\2c 0\2c 0\.25\)\] {
+  --tw-shadow: 0 20px 60px -20px rgba(0,0,0,0.25);
+  --tw-shadow-colored: 0 20px 60px -20px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-sm {
+  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .shadow-black\/10 {
+  --tw-shadow-color: rgb(0 0 0 / 0.1);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.tt-shell .shadow-black\/60 {
+  --tw-shadow-color: rgb(0 0 0 / 0.6);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.tt-shell .outline-none {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.tt-shell .ring-1 {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .ring-2 {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .ring-inset {
+  --tw-ring-inset: inset;
+}
+.tt-shell .ring-amber-500\/20 {
+  --tw-ring-color: rgb(245 158 11 / 0.2);
+}
+.tt-shell .ring-black\/10 {
+  --tw-ring-color: rgb(0 0 0 / 0.1);
+}
+.tt-shell .ring-black\/5 {
+  --tw-ring-color: rgb(0 0 0 / 0.05);
+}
+.tt-shell .ring-black\/\[0\.04\] {
+  --tw-ring-color: rgb(0 0 0 / 0.04);
+}
+.tt-shell .ring-oai-brand-500\/10 {
+  --tw-ring-color: rgb(217 119 87 / 0.1);
+}
+.tt-shell .ring-oai-brand-500\/50 {
+  --tw-ring-color: rgb(217 119 87 / 0.5);
+}
+.tt-shell .ring-oai-gray-200 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(229 229 229 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .ring-oai-gray-300 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(212 212 212 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .ring-oai-gray-700 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(64 64 64 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .ring-oai-gray-900 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(23 23 23 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .ring-white\/10 {
+  --tw-ring-color: rgb(255 255 255 / 0.1);
+}
+.tt-shell .ring-white\/\[0\.06\] {
+  --tw-ring-color: rgb(255 255 255 / 0.06);
+}
+.tt-shell .ring-offset-1 {
+  --tw-ring-offset-width: 1px;
+}
+.tt-shell .ring-offset-white {
+  --tw-ring-offset-color: #fff;
+}
+.tt-shell .blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .blur-3xl {
+  --tw-blur: blur(64px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .blur-\[120px\] {
+  --tw-blur: blur(120px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .blur-\[130px\] {
+  --tw-blur: blur(130px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .blur-\[2px\] {
+  --tw-blur: blur(2px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .brightness-0 {
+  --tw-brightness: brightness(0);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .drop-shadow {
+  --tw-drop-shadow: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .backdrop-blur {
+  --tw-backdrop-blur: blur(8px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.tt-shell .backdrop-blur-2xl {
+  --tw-backdrop-blur: blur(40px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.tt-shell .backdrop-blur-\[2px\] {
+  --tw-backdrop-blur: blur(2px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.tt-shell .backdrop-blur-md {
+  --tw-backdrop-blur: blur(12px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.tt-shell .backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.tt-shell .transition {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-\[opacity\2c transform\] {
+  transition-property: opacity,transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-\[transform\2c width\] {
+  transition-property: transform,width;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-\[width\2c background-color\] {
+  transition-property: width,background-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-\[width\] {
+  transition-property: width;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-shadow {
+  transition-property: box-shadow;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.tt-shell .duration-100 {
+  transition-duration: 100ms;
+}
+.tt-shell .duration-1000 {
+  transition-duration: 1000ms;
+}
+.tt-shell .duration-150 {
+  transition-duration: 150ms;
+}
+.tt-shell .duration-200 {
+  transition-duration: 200ms;
+}
+.tt-shell .duration-300 {
+  transition-duration: 300ms;
+}
+.tt-shell .duration-500 {
+  transition-duration: 500ms;
+}
+.tt-shell .duration-700 {
+  transition-duration: 700ms;
+}
+.tt-shell .duration-\[220ms\] {
+  transition-duration: 220ms;
+}
+.tt-shell .ease-\[cubic-bezier\(0\.16\2c 1\2c 0\.3\2c 1\)\] {
+  transition-timing-function: cubic-bezier(0.16,1,0.3,1);
+}
+.tt-shell .ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+.tt-shell .\[scrollbar-width\:none\] {
+  scrollbar-width: none;
+}
+.tt-shell .placeholder\:text-oai-gray-400::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity, 1));
+}
+.tt-shell .last\:border-b-0:last-child {
+  border-bottom-width: 0px;
+}
+.tt-shell .hover\:z-10:hover {
+  z-index: 10;
+}
+.tt-shell .hover\:z-50:hover {
+  z-index: 50;
+}
+.tt-shell .hover\:rotate-90:hover {
+  --tw-rotate: 90deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .hover\:scale-125:hover {
+  --tw-scale-x: 1.25;
+  --tw-scale-y: 1.25;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .hover\:border-\[\#c9604f\]\/30:hover {
+  border-color: rgb(201 96 79 / 0.3);
+}
+.tt-shell .hover\:border-\[\#d97757\]\/30:hover {
+  border-color: rgb(217 119 87 / 0.3);
+}
+.tt-shell .hover\:border-\[\#d9a05b\]\/30:hover {
+  border-color: rgb(217 160 91 / 0.3);
+}
+.tt-shell .hover\:border-amber-500\/30:hover {
+  border-color: rgb(245 158 11 / 0.3);
+}
+.tt-shell .hover\:border-gray-500\/30:hover {
+  border-color: rgb(107 114 128 / 0.3);
+}
+.tt-shell .hover\:border-oai-brand:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 119 87 / var(--tw-border-opacity, 1));
+}
+.tt-shell .hover\:border-oai-brand-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(230 135 95 / var(--tw-border-opacity, 1));
+}
+.tt-shell .hover\:border-oai-gray-200:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 229 229 / var(--tw-border-opacity, 1));
+}
+.tt-shell .hover\:border-oai-gray-300:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity, 1));
+}
+.tt-shell .hover\:border-rose-200:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(254 205 211 / var(--tw-border-opacity, 1));
+}
+.tt-shell .hover\:\!bg-red-700:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity, 1)) !important;
+}
+.tt-shell .hover\:bg-gray-500\/10:hover {
+  background-color: rgb(107 114 128 / 0.1);
+}
+.tt-shell .hover\:bg-oai-brand-50\/40:hover {
+  background-color: rgb(253 243 239 / 0.4);
+}
+.tt-shell .hover\:bg-oai-brand-50\/50:hover {
+  background-color: rgb(253 243 239 / 0.5);
+}
+.tt-shell .hover\:bg-oai-brand-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(201 100 66 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .hover\:bg-oai-brand\/15:hover {
+  background-color: rgb(217 119 87 / 0.15);
+}
+.tt-shell .hover\:bg-oai-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .hover\:bg-oai-gray-100\/60:hover {
+  background-color: rgb(245 245 245 / 0.6);
+}
+.tt-shell .hover\:bg-oai-gray-200\/50:hover {
+  background-color: rgb(229 229 229 / 0.5);
+}
+.tt-shell .hover\:bg-oai-gray-200\/60:hover {
+  background-color: rgb(229 229 229 / 0.6);
+}
+.tt-shell .hover\:bg-oai-gray-200\/70:hover {
+  background-color: rgb(229 229 229 / 0.7);
+}
+.tt-shell .hover\:bg-oai-gray-50:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .hover\:bg-oai-gray-50\/40:hover {
+  background-color: rgb(250 250 250 / 0.4);
+}
+.tt-shell .hover\:bg-oai-gray-50\/50:hover {
+  background-color: rgb(250 250 250 / 0.5);
+}
+.tt-shell .hover\:bg-oai-gray-800:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .hover\:bg-oai-white\/70:hover {
+  background-color: rgb(250 250 250 / 0.7);
+}
+.tt-shell .hover\:bg-rose-50\/30:hover {
+  background-color: rgb(255 241 242 / 0.3);
+}
+.tt-shell .hover\:bg-transparent:hover {
+  background-color: transparent;
+}
+.tt-shell .hover\:text-oai-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 10 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-oai-brand:hover {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 87 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-oai-brand-dark:hover {
+  --tw-text-opacity: 1;
+  color: rgb(201 100 66 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-oai-gray-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-oai-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-oai-gray-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(38 38 38 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-oai-gray-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:text-rose-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(244 63 94 / var(--tw-text-opacity, 1));
+}
+.tt-shell .hover\:underline:hover {
+  text-decoration-line: underline;
+}
+.tt-shell .hover\:decoration-oai-gray-500:hover {
+  text-decoration-color: #737373;
+}
+.tt-shell .hover\:opacity-100:hover {
+  opacity: 1;
+}
+.tt-shell .hover\:opacity-80:hover {
+  opacity: 0.8;
+}
+.tt-shell .hover\:opacity-90:hover {
+  opacity: 0.9;
+}
+.tt-shell .hover\:shadow-\[0_0_20px_-3px_rgba\(201\2c 96\2c 79\2c 0\.15\)\]:hover {
+  --tw-shadow: 0 0 20px -3px rgba(201,96,79,0.15);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .hover\:shadow-\[0_0_20px_-3px_rgba\(217\2c 119\2c 87\2c 0\.15\)\]:hover {
+  --tw-shadow: 0 0 20px -3px rgba(217,119,87,0.15);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .hover\:shadow-\[0_0_20px_-3px_rgba\(217\2c 160\2c 91\2c 0\.15\)\]:hover {
+  --tw-shadow: 0 0 20px -3px rgba(217,160,91,0.15);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .hover\:shadow-\[0_0_20px_-3px_rgba\(245\2c 158\2c 11\2c 0\.15\)\]:hover {
+  --tw-shadow: 0 0 20px -3px rgba(245,158,11,0.15);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .focus\:\!border-oai-gray-400:focus {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(163 163 163 / var(--tw-border-opacity, 1)) !important;
+}
+.tt-shell .focus\:border-oai-brand:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 119 87 / var(--tw-border-opacity, 1));
+}
+.tt-shell .focus\:border-oai-brand-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 119 87 / var(--tw-border-opacity, 1));
+}
+.tt-shell .focus\:border-oai-error:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(239 68 68 / var(--tw-border-opacity, 1));
+}
+.tt-shell .focus\:border-oai-gray-400:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(163 163 163 / var(--tw-border-opacity, 1));
+}
+.tt-shell .focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.tt-shell .focus\:ring-1:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .focus\:ring-inset:focus {
+  --tw-ring-inset: inset;
+}
+.tt-shell .focus\:\!ring-oai-gray-400\/20:focus {
+  --tw-ring-color: rgb(163 163 163 / 0.2) !important;
+}
+.tt-shell .focus\:ring-oai-blue\/30:focus {
+  --tw-ring-color: rgb(217 119 87 / 0.3);
+}
+.tt-shell .focus\:ring-oai-brand-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(217 119 87 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .focus\:ring-oai-brand\/30:focus {
+  --tw-ring-color: rgb(217 119 87 / 0.3);
+}
+.tt-shell .focus\:ring-oai-error\/30:focus {
+  --tw-ring-color: rgb(239 68 68 / 0.3);
+}
+.tt-shell .focus\:ring-oai-gray-400\/30:focus {
+  --tw-ring-color: rgb(163 163 163 / 0.3);
+}
+.tt-shell .focus-visible\:opacity-100:focus-visible {
+  opacity: 1;
+}
+.tt-shell .focus-visible\:outline-none:focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.tt-shell .focus-visible\:\!outline-red-600:focus-visible {
+  outline-color: #dc2626 !important;
+}
+.tt-shell .focus-visible\:ring-1:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .focus-visible\:ring-2:focus-visible {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .focus-visible\:ring-inset:focus-visible {
+  --tw-ring-inset: inset;
+}
+.tt-shell .focus-visible\:ring-oai-brand:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(217 119 87 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .focus-visible\:ring-oai-brand-500:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(217 119 87 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .focus-visible\:ring-oai-brand\/40:focus-visible {
+  --tw-ring-color: rgb(217 119 87 / 0.4);
+}
+.tt-shell .focus-visible\:ring-oai-brand\/50:focus-visible {
+  --tw-ring-color: rgb(217 119 87 / 0.5);
+}
+.tt-shell .focus-visible\:ring-oai-brand\/60:focus-visible {
+  --tw-ring-color: rgb(217 119 87 / 0.6);
+}
+.tt-shell .focus-visible\:ring-oai-gray-300:focus-visible {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(212 212 212 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .focus-visible\:ring-oai-gray-400\/40:focus-visible {
+  --tw-ring-color: rgb(163 163 163 / 0.4);
+}
+.tt-shell .focus-visible\:ring-rose-500\/50:focus-visible {
+  --tw-ring-color: rgb(244 63 94 / 0.5);
+}
+.tt-shell .focus-visible\:ring-offset-2:focus-visible {
+  --tw-ring-offset-width: 2px;
+}
+.tt-shell .active\:scale-95:active {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .active\:scale-\[0\.97\]:active {
+  --tw-scale-x: 0.97;
+  --tw-scale-y: 0.97;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .active\:scale-\[0\.98\]:active {
+  --tw-scale-x: 0.98;
+  --tw-scale-y: 0.98;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .active\:cursor-grabbing:active {
+  cursor: grabbing;
+}
+.tt-shell .active\:border-oai-brand-dark:active {
+  --tw-border-opacity: 1;
+  border-color: rgb(201 100 66 / var(--tw-border-opacity, 1));
+}
+.tt-shell .active\:bg-oai-brand-50:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 243 239 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .active\:bg-oai-gray-100:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .active\:bg-oai-gray-50:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .active\:bg-oai-gray-900:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .active\:bg-oai-gray-950:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 10 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .active\:duration-100:active {
+  transition-duration: 100ms;
+}
+.tt-shell .disabled\:pointer-events-none:disabled {
+  pointer-events: none;
+}
+.tt-shell .disabled\:cursor-default:disabled {
+  cursor: default;
+}
+.tt-shell .disabled\:cursor-not-allowed:disabled {
+  cursor: not-allowed;
+}
+.tt-shell .disabled\:border-oai-gray-200:disabled {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 229 229 / var(--tw-border-opacity, 1));
+}
+.tt-shell .disabled\:bg-oai-gray-300:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 212 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .disabled\:text-oai-gray-400:disabled {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity, 1));
+}
+.tt-shell .disabled\:text-oai-gray-500:disabled {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+.tt-shell .disabled\:opacity-30:disabled {
+  opacity: 0.3;
+}
+.tt-shell .disabled\:opacity-40:disabled {
+  opacity: 0.4;
+}
+.tt-shell .disabled\:opacity-50:disabled {
+  opacity: 0.5;
+}
+.tt-shell .disabled\:opacity-60:disabled {
+  opacity: 0.6;
+}
+.tt-shell .group:focus-within .group-focus-within\:opacity-100 {
+  opacity: 1;
+}
+.tt-shell .group:hover .group-hover\:-translate-y-\[1px\] {
+  --tw-translate-y: -1px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .group:hover .group-hover\:translate-x-0\.5 {
+  --tw-translate-x: 0.125rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .group:hover .group-hover\:translate-y-0 {
+  --tw-translate-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .group:hover .group-hover\:scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .group:hover .group-hover\:scale-110 {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .group:hover .group-hover\:bg-oai-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .group:hover .group-hover\:text-oai-brand-500 {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 87 / var(--tw-text-opacity, 1));
+}
+.tt-shell .group:hover .group-hover\:text-oai-brand-600 {
+  --tw-text-opacity: 1;
+  color: rgb(201 100 66 / var(--tw-text-opacity, 1));
+}
+.tt-shell .group\/col:hover .group-hover\/col\:opacity-100 {
+  opacity: 1;
+}
+.tt-shell .group\/sortable:hover .group-hover\/sortable\:opacity-100 {
+  opacity: 1;
+}
+.tt-shell .group:hover .group-hover\:opacity-0 {
+  opacity: 0;
+}
+.tt-shell .group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+.tt-shell .group:hover .group-hover\:opacity-60 {
+  opacity: 0.6;
+}
+.tt-shell .group:hover .group-hover\:brightness-110 {
+  --tw-brightness: brightness(1.1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .group:active .group-active\:scale-90 {
+  --tw-scale-x: .9;
+  --tw-scale-y: .9;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .peer:hover ~ .peer-hover\:shadow-\[0_12px_28px_-14px_rgba\(15\2c 23\2c 42\2c 0\.22\)\] {
+  --tw-shadow: 0 12px 28px -14px rgba(15,23,42,0.22);
+  --tw-shadow-colored: 0 12px 28px -14px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .peer:focus-visible ~ .peer-focus-visible\:shadow-\[0_12px_28px_-14px_rgba\(15\2c 23\2c 42\2c 0\.22\)\] {
+  --tw-shadow: 0 12px 28px -14px rgba(15,23,42,0.22);
+  --tw-shadow-colored: 0 12px 28px -14px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .has-\[\[data-sortable-body\]\:empty\]\:hidden:has([data-sortable-body]:empty) {
+  display: none;
+}
+.tt-shell .aria-expanded\:bg-oai-gray-50[aria-expanded="true"] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .data-\[ending-style\]\:-translate-y-3[data-ending-style] {
+  --tw-translate-y: -12px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[ending-style\]\:translate-y-2[data-ending-style] {
+  --tw-translate-y: 8px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[starting-style\]\:-translate-y-3[data-starting-style] {
+  --tw-translate-y: -12px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[starting-style\]\:translate-y-2[data-starting-style] {
+  --tw-translate-y: 8px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[ending-style\]\:scale-95[data-ending-style] {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[ending-style\]\:scale-\[0\.96\][data-ending-style] {
+  --tw-scale-x: 0.96;
+  --tw-scale-y: 0.96;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[starting-style\]\:scale-95[data-starting-style] {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[starting-style\]\:scale-\[0\.96\][data-starting-style] {
+  --tw-scale-x: 0.96;
+  --tw-scale-y: 0.96;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.tt-shell .data-\[popup-open\]\:border-oai-gray-300[data-popup-open] {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity, 1));
+}
+.tt-shell .data-\[ending-style\]\:opacity-0[data-ending-style] {
+  opacity: 0;
+}
+.tt-shell .data-\[starting-style\]\:opacity-0[data-starting-style] {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tt-shell .motion-reduce\:animate-none {
+    animation: none;
+  }
+  .tt-shell .motion-reduce\:transition-none {
+    transition-property: none;
+  }
+}
+.tt-shell .dark\:divide-oai-gray-800\/50:is(.dark *) > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(38 38 38 / 0.5);
+}
+.tt-shell .dark\:divide-oai-gray-800\/60:is(.dark *) > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(38 38 38 / 0.6);
+}
+.tt-shell .dark\:divide-oai-gray-800\/70:is(.dark *) > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(38 38 38 / 0.7);
+}
+.tt-shell .dark\:divide-zinc-800\/40:is(.dark *) > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgb(39 39 42 / 0.4);
+}
+.tt-shell .dark\:\!border-oai-gray-800:is(.dark *) {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(38 38 38 / var(--tw-border-opacity, 1)) !important;
+}
+.tt-shell .dark\:border-\[\#d9827a\]\/15:is(.dark *) {
+  border-color: rgb(217 130 122 / 0.15);
+}
+.tt-shell .dark\:border-\[\#d9a05b\]\/15:is(.dark *) {
+  border-color: rgb(217 160 91 / 0.15);
+}
+.tt-shell .dark\:border-\[\#e89270\]\/15:is(.dark *) {
+  border-color: rgb(232 146 112 / 0.15);
+}
+.tt-shell .dark\:border-amber-400\/15:is(.dark *) {
+  border-color: rgb(251 191 36 / 0.15);
+}
+.tt-shell .dark\:border-amber-700\/40:is(.dark *) {
+  border-color: rgb(180 83 9 / 0.4);
+}
+.tt-shell .dark\:border-gray-500\/30:is(.dark *) {
+  border-color: rgb(107 114 128 / 0.3);
+}
+.tt-shell .dark\:border-oai-gray-600:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(82 82 82 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:border-oai-gray-700:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(64 64 64 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:border-oai-gray-700\/50:is(.dark *) {
+  border-color: rgb(64 64 64 / 0.5);
+}
+.tt-shell .dark\:border-oai-gray-700\/60:is(.dark *) {
+  border-color: rgb(64 64 64 / 0.6);
+}
+.tt-shell .dark\:border-oai-gray-700\/70:is(.dark *) {
+  border-color: rgb(64 64 64 / 0.7);
+}
+.tt-shell .dark\:border-oai-gray-800:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(38 38 38 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:border-oai-gray-800\/40:is(.dark *) {
+  border-color: rgb(38 38 38 / 0.4);
+}
+.tt-shell .dark\:border-oai-gray-800\/50:is(.dark *) {
+  border-color: rgb(38 38 38 / 0.5);
+}
+.tt-shell .dark\:border-oai-gray-800\/60:is(.dark *) {
+  border-color: rgb(38 38 38 / 0.6);
+}
+.tt-shell .dark\:border-oai-gray-800\/70:is(.dark *) {
+  border-color: rgb(38 38 38 / 0.7);
+}
+.tt-shell .dark\:border-oai-gray-800\/80:is(.dark *) {
+  border-color: rgb(38 38 38 / 0.8);
+}
+.tt-shell .dark\:border-red-500\/40:is(.dark *) {
+  border-color: rgb(239 68 68 / 0.4);
+}
+.tt-shell .dark\:border-rose-900\/40:is(.dark *) {
+  border-color: rgb(136 19 55 / 0.4);
+}
+.tt-shell .dark\:border-white\/10:is(.dark *) {
+  border-color: rgb(255 255 255 / 0.1);
+}
+.tt-shell .dark\:border-zinc-800\/40:is(.dark *) {
+  border-color: rgb(39 39 42 / 0.4);
+}
+.tt-shell .dark\:border-zinc-800\/50:is(.dark *) {
+  border-color: rgb(39 39 42 / 0.5);
+}
+.tt-shell .dark\:border-zinc-800\/80:is(.dark *) {
+  border-color: rgb(39 39 42 / 0.8);
+}
+.tt-shell .dark\:border-t-oai-gray-800:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(38 38 38 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:\!bg-red-600:is(.dark *) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1)) !important;
+}
+.tt-shell .dark\:bg-\[\#d97757\]\/\[0\.08\]:is(.dark *) {
+  background-color: rgb(217 119 87 / 0.08);
+}
+.tt-shell .dark\:bg-\[\#d9827a\]\/10:is(.dark *) {
+  background-color: rgb(217 130 122 / 0.1);
+}
+.tt-shell .dark\:bg-\[\#d9a05b\]\/10:is(.dark *) {
+  background-color: rgb(217 160 91 / 0.1);
+}
+.tt-shell .dark\:bg-\[\#e89270\]\/10:is(.dark *) {
+  background-color: rgb(232 146 112 / 0.1);
+}
+.tt-shell .dark\:bg-amber-400\/10:is(.dark *) {
+  background-color: rgb(251 191 36 / 0.1);
+}
+.tt-shell .dark\:bg-amber-500\/15:is(.dark *) {
+  background-color: rgb(245 158 11 / 0.15);
+}
+.tt-shell .dark\:bg-amber-900\/10:is(.dark *) {
+  background-color: rgb(120 53 15 / 0.1);
+}
+.tt-shell .dark\:bg-amber-950\/30:is(.dark *) {
+  background-color: rgb(69 26 3 / 0.3);
+}
+.tt-shell .dark\:bg-black\/40:is(.dark *) {
+  background-color: rgb(0 0 0 / 0.4);
+}
+.tt-shell .dark\:bg-black\/60:is(.dark *) {
+  background-color: rgb(0 0 0 / 0.6);
+}
+.tt-shell .dark\:bg-emerald-500\/10:is(.dark *) {
+  background-color: rgb(16 185 129 / 0.1);
+}
+.tt-shell .dark\:bg-emerald-950:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 44 34 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-gray-500\/\[0\.06\]:is(.dark *) {
+  background-color: rgb(107 114 128 / 0.06);
+}
+.tt-shell .dark\:bg-oai-brand-500\/10:is(.dark *) {
+  background-color: rgb(217 119 87 / 0.1);
+}
+.tt-shell .dark\:bg-oai-brand-900\/30:is(.dark *) {
+  background-color: rgb(110 50 32 / 0.3);
+}
+.tt-shell .dark\:bg-oai-gray-500:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(115 115 115 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-oai-gray-600:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(82 82 82 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-oai-gray-700:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-oai-gray-700\/50:is(.dark *) {
+  background-color: rgb(64 64 64 / 0.5);
+}
+.tt-shell .dark\:bg-oai-gray-800:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-oai-gray-800\/50:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.5);
+}
+.tt-shell .dark\:bg-oai-gray-800\/60:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.6);
+}
+.tt-shell .dark\:bg-oai-gray-800\/70:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.7);
+}
+.tt-shell .dark\:bg-oai-gray-800\/80:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.8);
+}
+.tt-shell .dark\:bg-oai-gray-800\/85:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.85);
+}
+.tt-shell .dark\:bg-oai-gray-900:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-oai-gray-900\/20:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.2);
+}
+.tt-shell .dark\:bg-oai-gray-900\/40:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.4);
+}
+.tt-shell .dark\:bg-oai-gray-900\/50:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.5);
+}
+.tt-shell .dark\:bg-oai-gray-900\/60:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.6);
+}
+.tt-shell .dark\:bg-oai-gray-900\/75:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.75);
+}
+.tt-shell .dark\:bg-oai-gray-900\/80:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.8);
+}
+.tt-shell .dark\:bg-oai-gray-900\/90:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.9);
+}
+.tt-shell .dark\:bg-oai-gray-900\/95:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.95);
+}
+.tt-shell .dark\:bg-oai-gray-950:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(10 10 10 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-oai-gray-950\/40:is(.dark *) {
+  background-color: rgb(10 10 10 / 0.4);
+}
+.tt-shell .dark\:bg-oai-gray-950\/50:is(.dark *) {
+  background-color: rgb(10 10 10 / 0.5);
+}
+.tt-shell .dark\:bg-oai-white:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 250 250 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-red-900\/30:is(.dark *) {
+  background-color: rgb(127 29 29 / 0.3);
+}
+.tt-shell .dark\:bg-rose-950\/20:is(.dark *) {
+  background-color: rgb(76 5 25 / 0.2);
+}
+.tt-shell .dark\:bg-white:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-white\/\[0\.01\]:is(.dark *) {
+  background-color: rgb(255 255 255 / 0.01);
+}
+.tt-shell .dark\:bg-white\/\[0\.02\]:is(.dark *) {
+  background-color: rgb(255 255 255 / 0.02);
+}
+.tt-shell .dark\:bg-white\/\[0\.08\]:is(.dark *) {
+  background-color: rgb(255 255 255 / 0.08);
+}
+.tt-shell .dark\:bg-zinc-800\/60:is(.dark *) {
+  background-color: rgb(39 39 42 / 0.6);
+}
+.tt-shell .dark\:bg-zinc-950:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(9 9 11 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:bg-zinc-950\/50:is(.dark *) {
+  background-color: rgb(9 9 11 / 0.5);
+}
+.tt-shell .dark\:bg-\[radial-gradient\(circle_at_50\%_0\%\2c rgba\(201\2c 100\2c 66\2c 0\.05\)\2c transparent_50\%\)\]:is(.dark *) {
+  background-image: radial-gradient(circle at 50% 0%,rgba(201,100,66,0.05),transparent 50%);
+}
+.tt-shell .dark\:from-white:is(.dark *) {
+  --tw-gradient-from: #fff var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.tt-shell .dark\:from-white\/5:is(.dark *) {
+  --tw-gradient-from: rgb(255 255 255 / 0.05) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.tt-shell .dark\:to-oai-gray-400:is(.dark *) {
+  --tw-gradient-to: #a3a3a3 var(--tw-gradient-to-position);
+}
+.tt-shell .dark\:fill-oai-gray-300:is(.dark *) {
+  fill: #d4d4d4;
+}
+.tt-shell .dark\:fill-rose-400:is(.dark *) {
+  fill: #fb7185;
+}
+.tt-shell .dark\:text-\[\#d9827a\]:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(217 130 122 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-\[\#d9a05b\]:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(217 160 91 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-\[\#e89270\]:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(232 146 112 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-amber-300:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(252 211 77 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-amber-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(251 191 36 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-emerald-300:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(110 231 183 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-black:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 10 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-brand-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(230 135 95 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-100:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-200:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-300:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-500:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-600:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-900:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-gray-950:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(10 10 10 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-oai-white:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-red-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-rose-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(251 113 133 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-white:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-zinc-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(161 161 170 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-zinc-50:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:text-zinc-500:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(113 113 122 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:decoration-oai-gray-600:is(.dark *) {
+  text-decoration-color: #525252;
+}
+.tt-shell .dark\:placeholder-oai-gray-500:is(.dark *)::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-placeholder-opacity, 1));
+}
+.tt-shell .dark\:placeholder-oai-gray-600:is(.dark *)::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(82 82 82 / var(--tw-placeholder-opacity, 1));
+}
+.tt-shell .dark\:shadow-\[0_12px_28px_-12px_rgba\(0\2c 0\2c 0\2c 0\.6\)\]:is(.dark *) {
+  --tw-shadow: 0 12px 28px -12px rgba(0,0,0,0.6);
+  --tw-shadow-colored: 0 12px 28px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .dark\:shadow-\[0_12px_32px_-12px_rgba\(0\2c 0\2c 0\2c 0\.6\)\]:is(.dark *) {
+  --tw-shadow: 0 12px 32px -12px rgba(0,0,0,0.6);
+  --tw-shadow-colored: 0 12px 32px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .dark\:shadow-\[0_20px_60px_-10px_rgba\(0\2c 0\2c 0\2c 0\.65\)\]:is(.dark *) {
+  --tw-shadow: 0 20px 60px -10px rgba(0,0,0,0.65);
+  --tw-shadow-colored: 0 20px 60px -10px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .dark\:shadow-black\/30:is(.dark *) {
+  --tw-shadow-color: rgb(0 0 0 / 0.3);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.tt-shell .dark\:ring-1:is(.dark *) {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.tt-shell .dark\:ring-oai-gray-600:is(.dark *) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(82 82 82 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .dark\:ring-oai-gray-700:is(.dark *) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(64 64 64 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .dark\:ring-oai-gray-800:is(.dark *) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(38 38 38 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .dark\:ring-white:is(.dark *) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .dark\:ring-white\/10:is(.dark *) {
+  --tw-ring-color: rgb(255 255 255 / 0.1);
+}
+.tt-shell .dark\:ring-white\/\[0\.02\]:is(.dark *) {
+  --tw-ring-color: rgb(255 255 255 / 0.02);
+}
+.tt-shell .dark\:ring-white\/\[0\.04\]:is(.dark *) {
+  --tw-ring-color: rgb(255 255 255 / 0.04);
+}
+.tt-shell .dark\:ring-white\/\[0\.05\]:is(.dark *) {
+  --tw-ring-color: rgb(255 255 255 / 0.05);
+}
+.tt-shell .dark\:ring-offset-oai-gray-900:is(.dark *) {
+  --tw-ring-offset-color: #171717;
+}
+.tt-shell .dark\:brightness-100:is(.dark *) {
+  --tw-brightness: brightness(1);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .dark\:invert:is(.dark *) {
+  --tw-invert: invert(100%);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.tt-shell .dark\:hover\:border-\[\#d9827a\]\/30:hover:is(.dark *) {
+  border-color: rgb(217 130 122 / 0.3);
+}
+.tt-shell .dark\:hover\:border-\[\#d9a05b\]\/30:hover:is(.dark *) {
+  border-color: rgb(217 160 91 / 0.3);
+}
+.tt-shell .dark\:hover\:border-\[\#e89270\]\/30:hover:is(.dark *) {
+  border-color: rgb(232 146 112 / 0.3);
+}
+.tt-shell .dark\:hover\:border-amber-400\/30:hover:is(.dark *) {
+  border-color: rgb(251 191 36 / 0.3);
+}
+.tt-shell .dark\:hover\:border-gray-500\/40:hover:is(.dark *) {
+  border-color: rgb(107 114 128 / 0.4);
+}
+.tt-shell .dark\:hover\:border-oai-brand-500\/80:hover:is(.dark *) {
+  border-color: rgb(217 119 87 / 0.8);
+}
+.tt-shell .dark\:hover\:border-oai-gray-600:hover:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(82 82 82 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:hover\:border-oai-gray-700:hover:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(64 64 64 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:hover\:border-oai-gray-800:hover:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(38 38 38 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:hover\:border-rose-900\/50:hover:is(.dark *) {
+  border-color: rgb(136 19 55 / 0.5);
+}
+.tt-shell .dark\:hover\:\!bg-red-500:hover:is(.dark *) {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity, 1)) !important;
+}
+.tt-shell .dark\:hover\:bg-oai-brand-950\/20:hover:is(.dark *) {
+  background-color: rgb(62 26 16 / 0.2);
+}
+.tt-shell .dark\:hover\:bg-oai-brand-950\/30:hover:is(.dark *) {
+  background-color: rgb(62 26 16 / 0.3);
+}
+.tt-shell .dark\:hover\:bg-oai-gray-100:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:hover\:bg-oai-gray-200:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:hover\:bg-oai-gray-700:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:hover\:bg-oai-gray-800:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:hover\:bg-oai-gray-800\/10:hover:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.1);
+}
+.tt-shell .dark\:hover\:bg-oai-gray-800\/40:hover:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.4);
+}
+.tt-shell .dark\:hover\:bg-oai-gray-800\/50:hover:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.5);
+}
+.tt-shell .dark\:hover\:bg-oai-gray-800\/60:hover:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.6);
+}
+.tt-shell .dark\:hover\:bg-oai-gray-800\/70:hover:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.7);
+}
+.tt-shell .dark\:hover\:bg-oai-gray-900:hover:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:hover\:bg-oai-gray-900\/80:hover:is(.dark *) {
+  background-color: rgb(23 23 23 / 0.8);
+}
+.tt-shell .dark\:hover\:bg-rose-950\/5:hover:is(.dark *) {
+  background-color: rgb(76 5 25 / 0.05);
+}
+.tt-shell .dark\:hover\:bg-transparent:hover:is(.dark *) {
+  background-color: transparent;
+}
+.tt-shell .dark\:hover\:text-oai-brand-light:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(232 146 112 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:text-oai-gray-100:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(245 245 245 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:text-oai-gray-200:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:text-oai-gray-300:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(212 212 212 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:text-oai-white:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:text-rose-400:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(251 113 133 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:text-white:hover:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:hover\:decoration-oai-gray-400:hover:is(.dark *) {
+  text-decoration-color: #a3a3a3;
+}
+.tt-shell .hover\:dark\:shadow-\[0_0_20px_-3px_rgba\(217\2c 130\2c 122\2c 0\.25\)\]:is(.dark *):hover {
+  --tw-shadow: 0 0 20px -3px rgba(217,130,122,0.25);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .hover\:dark\:shadow-\[0_0_20px_-3px_rgba\(217\2c 160\2c 91\2c 0\.25\)\]:is(.dark *):hover {
+  --tw-shadow: 0 0 20px -3px rgba(217,160,91,0.25);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .hover\:dark\:shadow-\[0_0_20px_-3px_rgba\(232\2c 146\2c 112\2c 0\.25\)\]:is(.dark *):hover {
+  --tw-shadow: 0 0 20px -3px rgba(232,146,112,0.25);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .hover\:dark\:shadow-\[0_0_20px_-3px_rgba\(245\2c 158\2c 11\2c 0\.25\)\]:is(.dark *):hover {
+  --tw-shadow: 0 0 20px -3px rgba(245,158,11,0.25);
+  --tw-shadow-colored: 0 0 20px -3px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .dark\:hover\:ring-white\/\[0\.08\]:hover:is(.dark *) {
+  --tw-ring-color: rgb(255 255 255 / 0.08);
+}
+.tt-shell .dark\:focus\:\!border-oai-gray-500:focus:is(.dark *) {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(115 115 115 / var(--tw-border-opacity, 1)) !important;
+}
+.tt-shell .dark\:focus\:border-oai-brand:focus:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(217 119 87 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:focus\:border-oai-gray-500:focus:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(115 115 115 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:focus\:\!ring-oai-gray-500\/20:focus:is(.dark *) {
+  --tw-ring-color: rgb(115 115 115 / 0.2) !important;
+}
+.tt-shell .dark\:focus-visible\:ring-oai-gray-600:focus-visible:is(.dark *) {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(82 82 82 / var(--tw-ring-opacity, 1));
+}
+.tt-shell .dark\:focus-visible\:ring-offset-oai-gray-950:focus-visible:is(.dark *) {
+  --tw-ring-offset-color: #0a0a0a;
+}
+.tt-shell .dark\:active\:bg-oai-brand-900\/50:active:is(.dark *) {
+  background-color: rgb(110 50 32 / 0.5);
+}
+.tt-shell .dark\:active\:bg-oai-gray-200:active:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:active\:bg-oai-gray-300:active:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 212 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:active\:bg-oai-gray-800:active:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(38 38 38 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:disabled\:border-oai-gray-700:disabled:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(64 64 64 / var(--tw-border-opacity, 1));
+}
+.tt-shell .dark\:disabled\:bg-oai-gray-700:disabled:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .dark\:disabled\:text-oai-gray-400:disabled:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(163 163 163 / var(--tw-text-opacity, 1));
+}
+.tt-shell .dark\:disabled\:text-oai-gray-500:disabled:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity, 1));
+}
+.tt-shell .group:hover .dark\:group-hover\:bg-oai-gray-900:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 23 23 / var(--tw-bg-opacity, 1));
+}
+.tt-shell .group:hover .dark\:group-hover\:text-oai-brand-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(230 135 95 / var(--tw-text-opacity, 1));
+}
+.tt-shell .peer:hover ~ .dark\:peer-hover\:shadow-\[0_12px_28px_-12px_rgba\(0\2c 0\2c 0\2c 0\.6\)\]:is(.dark *) {
+  --tw-shadow: 0 12px 28px -12px rgba(0,0,0,0.6);
+  --tw-shadow-colored: 0 12px 28px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .peer:focus-visible ~ .dark\:peer-focus-visible\:shadow-\[0_12px_28px_-12px_rgba\(0\2c 0\2c 0\2c 0\.6\)\]:is(.dark *) {
+  --tw-shadow: 0 12px 28px -12px rgba(0,0,0,0.6);
+  --tw-shadow-colored: 0 12px 28px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.tt-shell .dark\:aria-expanded\:bg-oai-gray-800\/40[aria-expanded="true"]:is(.dark *) {
+  background-color: rgb(38 38 38 / 0.4);
+}
+@media (min-width: 640px) {
+  .tt-shell .sm\:left-\[71px\] {
+    left: 71px;
+  }
+  .tt-shell .sm\:block {
+    display: block;
+  }
+  .tt-shell .sm\:inline {
+    display: inline;
+  }
+  .tt-shell .sm\:flex {
+    display: flex;
+  }
+  .tt-shell .sm\:inline-flex {
+    display: inline-flex;
+  }
+  .tt-shell .sm\:hidden {
+    display: none;
+  }
+  .tt-shell .sm\:h-10 {
+    height: 40px;
+  }
+  .tt-shell .sm\:h-\[72px\] {
+    height: 72px;
+  }
+  .tt-shell .sm\:w-10 {
+    width: 40px;
+  }
+  .tt-shell .sm\:w-\[72px\] {
+    width: 72px;
+  }
+  .tt-shell .sm\:min-w-0 {
+    min-width: 0;
+  }
+  .tt-shell .sm\:min-w-\[200px\] {
+    min-width: 200px;
+  }
+  .tt-shell .sm\:min-w-\[72px\] {
+    min-width: 72px;
+  }
+  .tt-shell .sm\:max-w-\[140px\] {
+    max-width: 140px;
+  }
+  .tt-shell .sm\:max-w-\[72px\] {
+    max-width: 72px;
+  }
+  .tt-shell .sm\:max-w-\[min\(260px\2c 45vw\)\] {
+    max-width: min(260px, 45vw);
+  }
+  .tt-shell .sm\:max-w-md {
+    max-width: 28rem;
+  }
+  .tt-shell .sm\:shrink-0 {
+    flex-shrink: 0;
+  }
+  .tt-shell .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tt-shell .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .tt-shell .sm\:flex-row {
+    flex-direction: row;
+  }
+  .tt-shell .sm\:items-start {
+    align-items: flex-start;
+  }
+  .tt-shell .sm\:items-center {
+    align-items: center;
+  }
+  .tt-shell .sm\:justify-between {
+    justify-content: space-between;
+  }
+  .tt-shell .sm\:gap-4 {
+    gap: 16px;
+  }
+  .tt-shell .sm\:self-auto {
+    align-self: auto;
+  }
+  .tt-shell .sm\:px-4 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .tt-shell .sm\:px-6 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .tt-shell .sm\:pb-16 {
+    padding-bottom: 64px;
+  }
+  .tt-shell .sm\:pl-0 {
+    padding-left: 0;
+  }
+  .tt-shell .sm\:pt-10 {
+    padding-top: 40px;
+  }
+  .tt-shell .sm\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .tt-shell .sm\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+@media (min-width: 768px) {
+  .tt-shell .md\:h-12 {
+    height: 48px;
+  }
+  .tt-shell .md\:w-12 {
+    width: 48px;
+  }
+  .tt-shell .md\:w-\[300px\] {
+    width: 300px;
+  }
+  .tt-shell .md\:w-\[320px\] {
+    width: 320px;
+  }
+  .tt-shell .md\:w-\[340px\] {
+    width: 340px;
+  }
+  .tt-shell .md\:flex-row {
+    flex-direction: row;
+  }
+  .tt-shell .md\:border-b-0 {
+    border-bottom-width: 0px;
+  }
+  .tt-shell .md\:border-r {
+    border-right-width: 1px;
+  }
+  .tt-shell .md\:p-6 {
+    padding: 24px;
+  }
+  .tt-shell .md\:px-6 {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .tt-shell .md\:px-8 {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  .tt-shell .md\:py-16 {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .tt-shell .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .tt-shell .md\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  .tt-shell .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .tt-shell .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  .tt-shell .first\:md\:pt-6:first-child {
+    padding-top: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .tt-shell .lg\:order-1 {
+    order: 1;
+  }
+  .tt-shell .lg\:order-2 {
+    order: 2;
+  }
+  .tt-shell .lg\:col-span-4 {
+    grid-column: span 4 / span 4;
+  }
+  .tt-shell .lg\:col-span-5 {
+    grid-column: span 5 / span 5;
+  }
+  .tt-shell .lg\:col-span-7 {
+    grid-column: span 7 / span 7;
+  }
+  .tt-shell .lg\:col-span-8 {
+    grid-column: span 8 / span 8;
+  }
+  .tt-shell .lg\:flex {
+    display: flex;
+  }
+  .tt-shell .lg\:hidden {
+    display: none;
+  }
+  .tt-shell .lg\:grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .tt-shell .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tt-shell .lg\:gap-16 {
+    gap: 64px;
+  }
+  .tt-shell .lg\:pb-3 {
+    padding-bottom: 12px;
+  }
+  .tt-shell .lg\:pl-0 {
+    padding-left: 0;
+  }
+  .tt-shell .lg\:pr-3 {
+    padding-right: 12px;
+  }
+  .tt-shell .lg\:pr-6 {
+    padding-right: 24px;
+  }
+}
+@media (min-width: 1280px) {
+  .tt-shell .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .tt-shell .xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+.tt-shell .\[\&\:\:-webkit-scrollbar\]\:hidden::-webkit-scrollbar {
+  display: none;
+}
+.tt-shell .\[\&\:\:-webkit-search-cancel-button\]\:appearance-none::-webkit-search-cancel-button {
+  appearance: none;
+}
+.tt-shell .hover\:\[\&_svg\]\:text-oai-brand svg:hover {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 87 / var(--tw-text-opacity, 1));
+}
